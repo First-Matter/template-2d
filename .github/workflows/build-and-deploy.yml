@@ -1,0 +1,86 @@
+name: Build and Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    env:
+      PUBLIC_REPO_NAME: ''
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Cache Library
+      uses: actions/cache@v4
+      with:
+        path: Library
+        key: Library-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+        restore-keys: |
+          Library-
+
+    - name: Read Unity Version
+      id: read-unity-version
+      shell: pwsh
+      run: |
+        $projectVersionPath = "ProjectSettings/ProjectVersion.txt"
+        $unityVersionLine = Get-Content $projectVersionPath | Select-String -Pattern 'm_EditorVersion:'
+        $unityVersion = $unityVersionLine -replace 'm_EditorVersion: ', ''
+        Write-Output "unityVersion=$unityVersion" | Add-content $env:GITHUB_OUTPUT
+
+    - name: Echo Unity Version (Debug Step)
+      run: echo ${{ steps.read-unity-version.outputs.unityVersion }}
+
+    - name: Build project
+      uses: game-ci/unity-builder@v4
+      env:
+        UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+      with:
+        unityVersion: ${{ steps.read-unity-version.outputs.unityVersion }}
+        targetPlatform: WebGL
+        buildName: docs
+
+    - name: Deploy to GitHub Pages
+      env:
+        PUBLIC_REPO_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
+      run: |
+        ORG="${{ github.repository_owner }}"
+        git config --global user.email "$ORG@github.com"
+        git config --global user.name "Botty McBotface"
+        git clone https://$PUBLIC_REPO_TOKEN@github.com/$ORG/${{ env.PUBLIC_REPO_NAME }}.git gh-pages
+        rsync -av --delete --exclude='.git' --exclude='README.md' build/WebGL/ gh-pages/
+
+    - name: Create Deployment Summary
+      run: |
+        ORG="${{ github.repository_owner }}"
+        REPO="${{ github.repository }}"
+        DEPLOY_URL="https://$ORG.github.io/${{ env.PUBLIC_REPO_NAME }}"
+        echo "## 🌐 Deployment Summary" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "| Information | Details |" >> $GITHUB_STEP_SUMMARY
+        echo "|-------------|---------|" >> $GITHUB_STEP_SUMMARY
+        echo "| **Deployed URL** | [View the deployed site]($DEPLOY_URL) |" >> $GITHUB_STEP_SUMMARY
+        echo "| **Commit** | $GITHUB_SHA |" >> $GITHUB_STEP_SUMMARY
+        echo "| **Branch** | $GITHUB_REF_NAME |" >> $GITHUB_STEP_SUMMARY
+        echo "| **Workflow** | $GITHUB_WORKFLOW |" >> $GITHUB_STEP_SUMMARY
+        echo "| **Job** | $GITHUB_JOB |" >> $GITHUB_STEP_SUMMARY
+        echo "| **Run Number** | $GITHUB_RUN_NUMBER |" >> $GITHUB_STEP_SUMMARY
+        echo "| **Run ID** | $GITHUB_RUN_ID |" >> $GITHUB_STEP_SUMMARY
+        echo -e "$(cat $GITHUB_STEP_SUMMARY)" > gh-pages/README.md
+        echo "" >> gh-pages/README.md
+        echo "To request access to the [source code](https://github.com/$REPO), please contact the repository owner." >> gh-pages/README.md
+
+    - name: Commit and Push Build
+      env:
+        PUBLIC_REPO_TOKEN: ${{ secrets.PUBLIC_REPO_TOKEN }}
+      run: |
+        cd gh-pages
+        git add docs README.md
+        git commit -m "Update GitHub Pages and README with deployment summary"
+        git push https://$PUBLIC_REPO_TOKEN@github.com/${{ github.repository_owner }}/${{ env.PUBLIC_REPO_NAME }}.git main
