@@ -4,9 +4,14 @@ on:
   push:
     branches:
       - main
+    paths:
+      - "Assets/**"
+      - "Packages/**"
+      - "ProjectSettings/**"
 
 jobs:
   build:
+    if: github.run_number != 1
     env:
       PUBLIC_REPO_NAME: ''
     runs-on: ubuntu-latest
