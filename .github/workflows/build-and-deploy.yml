@@ -13,7 +13,7 @@ jobs:
   build:
     if: github.run_number != 1
     env:
-      PUBLIC_REPO_NAME: ''
+      PUBLIC_REPO_NAME: 'public-demo'
     runs-on: ubuntu-latest
 
     steps:
