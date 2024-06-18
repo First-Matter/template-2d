@@ -7,9 +7,8 @@ public class PlayerController : InjectableMonoBehaviour
   [Inject] private IPlayerInput inputHandler;
   [SerializeField] private float moveSpeed = 5f;
   // Start is called before the first frame update
-  override protected void Start()
+  void Start()
   {
-    base.Start();
     if (inputHandler == null)
     {
       Debug.LogError("InputHandler service not found.");

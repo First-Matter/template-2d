@@ -1,10 +1,7 @@
 using System;
 using System.Reflection;
 using UnityEngine;
-[AttributeUsage(AttributeTargets.Field)]
-public class InjectAttribute : Attribute
-{
-}
+
 public static class DependencyInjector
 {
   public static void InjectDependencies(MonoBehaviour monoBehaviour)
@@ -16,16 +13,19 @@ public static class DependencyInjector
     {
       if (field.GetCustomAttribute(typeof(InjectAttribute)) != null)
       {
-        var service = ServiceLocator.GetService(field.FieldType);
-        if (service != null)
+        var fieldType = field.FieldType;
+        SubscribeToService(fieldType, service =>
         {
           field.SetValue(monoBehaviour, service);
-        }
-        else
-        {
-          Debug.LogError($"Service of type {field.FieldType} not found for injection in {monoBehaviour.GetType().Name}");
-        }
+        });
       }
     }
+  }
+
+  private static void SubscribeToService(Type serviceType, Action<object> onServiceAvailable)
+  {
+    var subscribeMethod = typeof(ServiceLocator).GetMethod("SubscribeToService")
+        .MakeGenericMethod(serviceType);
+    subscribeMethod.Invoke(null, new object[] { onServiceAvailable });
   }
 }
