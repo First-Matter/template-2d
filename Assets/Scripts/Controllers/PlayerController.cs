@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : InjectableMonoBehaviour
 {
-  private IPlayerInput inputHandler;
+  [Inject] private IPlayerInput inputHandler;
   [SerializeField] private float moveSpeed = 5f;
   // Start is called before the first frame update
-  void Start()
+  override protected void Start()
   {
-    inputHandler = ServiceLocator.GetService<IPlayerInput>();
+    base.Start();
     if (inputHandler == null)
     {
       Debug.LogError("InputHandler service not found.");

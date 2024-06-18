@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,7 +14,15 @@ public static class ServiceLocator
       services[type] = service;
     }
   }
-
+  public static object GetService(Type type)
+  {
+    if (services.ContainsKey(type))
+    {
+      return services[type];
+    }
+    Debug.LogError($"Service of type {type} not registered");
+    return default;
+  }
   public static T GetService<T>()
   {
     var type = typeof(T);
