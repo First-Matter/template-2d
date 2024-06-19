@@ -1,9 +1,7 @@
 public interface IPlayerInput
 {
-  bool IsJumpButtonPressed();
-  bool IsJumpButtonHeld();
+  bool IsButtonPressed(Button button);
+  bool IsButtonHeld(Button button);
   float GetAxisHorizontal();
   float GetVerticalAxis();
-  bool IsFireButtonPressed();
-  bool IsFireButtonHeld();
 }

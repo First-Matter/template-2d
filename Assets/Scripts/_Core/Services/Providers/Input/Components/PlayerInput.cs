@@ -1,16 +1,38 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
+[System.Serializable]
+public enum Button
+{
+  Jump, Fire
+}
+[System.Serializable]
 public class PlayerInput : IPlayerInput
 {
-  readonly KeyCode jumpKey = KeyCode.Space;
-  public bool IsJumpButtonPressed()
+  [SerializeField]
+  private InputBinding[] inputBindings;
+  public bool IsButtonPressed(Button button)
   {
-    return Input.GetKeyDown(jumpKey);
+    foreach (InputBinding binding in inputBindings)
+    {
+      if (binding.button == button && binding.IsPressed())
+      {
+        return true;
+      }
+    }
+    return false;
   }
-  public bool IsJumpButtonHeld()
+  public bool IsButtonHeld(Button button)
   {
-    return Input.GetKey(jumpKey);
+    foreach (InputBinding binding in inputBindings)
+    {
+      if (binding.button == button && binding.IsHeld())
+      {
+        return true;
+      }
+    }
+    return false;
   }
   public float GetAxisHorizontal()
   {
@@ -20,12 +42,22 @@ public class PlayerInput : IPlayerInput
   {
     return Input.GetAxis("Vertical");
   }
-  public bool IsFireButtonPressed()
+  public void SetBinding(Button button, InputBinding binding)
   {
-    return Input.GetMouseButtonDown(0);
-  }
-  public bool IsFireButtonHeld()
-  {
-    return Input.GetMouseButton(0);
+    for (int i = 0; i < inputBindings.Length; i++)
+    {
+      if (inputBindings[i].button == button)
+      {
+        inputBindings[i] = binding;
+        return;
+      }
+    }
+    InputBinding[] newBindings = new InputBinding[inputBindings.Length + 1];
+    for (int i = 0; i < inputBindings.Length; i++)
+    {
+      newBindings[i] = inputBindings[i];
+    }
+    newBindings[inputBindings.Length] = binding;
+    inputBindings = newBindings;
   }
 }

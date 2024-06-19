@@ -448,6 +448,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1212792960220371655, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: _audioHandler.music.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2784924713148051935, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: cam
       value: 
@@ -463,6 +467,10 @@ PrefabInstance:
     - target: {fileID: 7376781065416430788, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: m_Name
       value: GameContext
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481369482590934429, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: _inputHandler.jumpKey
+      value: 323
       objectReference: {fileID: 0}
     - target: {fileID: 8589780492588210166, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: m_LocalPosition.x
