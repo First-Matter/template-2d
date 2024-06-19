@@ -4,23 +4,24 @@ using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
 [InitializeOnLoad]
-public static class AutoInstantiateServiceProviders
+public static class AutoInstantiateGameContext
 {
-  private static readonly string ServiceProvidersPrefabPath = "Assets/Prefabs/Services/GameContext.prefab";
+  private static readonly string prefabName = "GameContext";
+  private static readonly string prefabPath = $"Assets/Prefabs/{prefabName}/{prefabName}.prefab";
 
-  static AutoInstantiateServiceProviders()
+  static AutoInstantiateGameContext()
   {
     EditorSceneManager.sceneOpened += OnSceneOpened;
   }
 
   private static void OnSceneOpened(Scene scene, OpenSceneMode mode)
   {
-    EnsureServiceProviderInScene(ServiceProvidersPrefabPath);
+    EnsureServiceProviderInScene(prefabPath);
   }
 
   private static void EnsureServiceProviderInScene(string prefabPath)
   {
-    if (GameObject.Find("ServiceProvider") == null)
+    if (GameObject.Find(prefabName) == null)
     {
       GameObject prefab = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
       if (prefab != null)
