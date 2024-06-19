@@ -456,6 +456,18 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1474016325}
+    - target: {fileID: 2784924713148051935, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: boundsSize.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2784924713148051935, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: maxEdgePos.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2784924713148051935, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: minEdgePos.x
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5233904229047073371, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: cam
       value: 
@@ -463,6 +475,14 @@ PrefabInstance:
     - target: {fileID: 7376781065416430788, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: m_Name
       value: GameContext
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481369482590934429, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: _inputHandler.inputBindings.Array.data[1].keys.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8481369482590934429, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: _inputHandler.inputBindings.Array.data[1].keys.Array.data[1]
+      value: 306
       objectReference: {fileID: 0}
     - target: {fileID: 8589780492588210166, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: m_LocalPosition.x
