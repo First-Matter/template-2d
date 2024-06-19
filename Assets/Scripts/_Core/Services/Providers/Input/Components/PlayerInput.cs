@@ -12,7 +12,7 @@ public enum Button
 public class PlayerInput : IPlayerInput
 {
   [SerializeField] private InputBinding[] inputBindings;
-  [SerializeField] private PlayerInputEvents _playerData;
+  [SerializeField] private PlayerInputChannel _playerData;
 
   public void UpdateInput()
   {

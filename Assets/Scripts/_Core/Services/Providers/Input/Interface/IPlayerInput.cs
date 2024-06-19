@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 public interface IPlayerInput
 {
-  void UpdateInput();
   public void RegisterButtonPressEvent(Button button, Action action);
   public void RegisterButtonHoldEvent(Button button, Action action);
   public void RegisterButtonReleaseEvent(Button button, Action action);

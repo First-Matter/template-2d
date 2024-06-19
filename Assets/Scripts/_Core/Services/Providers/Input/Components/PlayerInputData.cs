@@ -2,8 +2,8 @@ using UnityEngine;
 using System;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "PlayerInputEvents", menuName = "Scriptable Objects/PlayerInputEvents")]
-public class PlayerInputEvents : ScriptableObject
+[CreateAssetMenu(fileName = "PlayerInputChannel", menuName = "Scriptable Objects/PlayerInputChannel")]
+public class PlayerInputChannel : ScriptableObject
 {
   public event Action<Vector2> OnMove;
   private Dictionary<Button, Action> buttonToPressEvent = new Dictionary<Button, Action>();

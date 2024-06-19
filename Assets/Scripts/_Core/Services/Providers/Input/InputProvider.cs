@@ -13,4 +13,8 @@ public class InputProvider : MonoBehaviour, IProvider<IPlayerInput>
   {
     return _inputHandler;
   }
+  void Update()
+  {
+    _inputHandler.UpdateInput();
+  }
 }

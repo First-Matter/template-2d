@@ -42,9 +42,4 @@ public class PlayerController : InjectableMonoBehaviour
       Debug.LogError("InputHandler service not found.");
     }
   }
-
-  void Update()
-  {
-    inputHandler.UpdateInput();
-  }
 }
