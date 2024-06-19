@@ -116,6 +116,7 @@ public class GameAudio : IGameAudio
   {
     Sound sound = System.Array.Find(music, m => m.name == musicName);
     AddSource(sound.source, "music");
+    sound.source.clip = sound.clip;
     sound.source.volume = sound.volume * musicVolume * masterVolume;
     sound.source.loop = sound.loop;
     sound.source.Play();

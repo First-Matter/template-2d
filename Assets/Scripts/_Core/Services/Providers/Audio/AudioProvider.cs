@@ -19,6 +19,7 @@ public class AudioProvider : MonoBehaviour, IProvider<IGameAudio>
   {
     IGameAudio audioHandler = _audioHandler;
     ServiceLocator.RegisterService(audioHandler);
+    CreateAudioSources();
     if (!_volumeControl.Initialized)
     {
       return;
@@ -34,6 +35,22 @@ public class AudioProvider : MonoBehaviour, IProvider<IGameAudio>
   public IGameAudio Get()
   {
     return _audioHandler;
+  }
+  private void CreateAudioSources()
+  {
+    foreach (Sound music in _audioHandler.music)
+    {
+      if (music.global)
+      {
+        GameObject audioSource = new GameObject(music.name);
+        audioSource.transform.SetParent(transform);
+        music.source = audioSource.AddComponent<AudioSource>();
+        if (music.playOnAwake)
+        {
+          _audioHandler.PlayMusic(music.name);
+        }
+      }
+    }
   }
   void Update()
   {
