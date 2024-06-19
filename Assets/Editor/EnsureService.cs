@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 [InitializeOnLoad]
 public static class AutoInstantiateServiceProviders
 {
-  private static readonly string ServiceProvidersPrefabPath = "Assets/Prefabs/Services/ServiceProvider.prefab";
+  private static readonly string ServiceProvidersPrefabPath = "Assets/Prefabs/Services/GameContext.prefab";
 
   static AutoInstantiateServiceProviders()
   {
