@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7376781065416430788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8589780492588210166}
+  - component: {fileID: 8481369482590934429}
+  - component: {fileID: 1212792960220371655}
+  - component: {fileID: 2784924713148051935}
+  - component: {fileID: 5233904229047073371}
+  m_Layer: 0
+  m_Name: GameContext
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8589780492588210166
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7376781065416430788}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8481369482590934429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7376781065416430788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 643cad1dcf800ea41a242d5fc4b5361b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1212792960220371655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7376781065416430788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 887eb414b9a66b943a176bfb85a84ba9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioHandler:
+    masterVolume: 1
+    musicVolume: 0.7
+    sfxVolume: 0.7
+    music: []
+    sfx: []
+  _volumeControl:
+    masterVolumeSlider: {fileID: 0}
+    musicVolumeSlider: {fileID: 0}
+    sfxVolumeSlider: {fileID: 0}
+--- !u!114 &2784924713148051935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7376781065416430788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 852fd3a7023da6f44920936263c04c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
+  boundsSize: {x: 15.9930315, y: 10}
+  minEdgePos: {x: -7.9965158, y: -5, z: -10}
+  maxEdgePos: {x: 7.9965158, y: 5, z: -10}
+  cam: {fileID: 0}
+  keepPlayerOnScreen: 1
+  refreshGizmos: 0
+  smoothSpeed: 0
+  screenEdgeBehaviour: 1
+  followPlayer: 1
+--- !u!114 &5233904229047073371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7376781065416430788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb00d56e554b216499b88c2eb397814a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetAspect: 1.6
+  cropX: 1
+  cropY: 1
+  cam: {fileID: 0}

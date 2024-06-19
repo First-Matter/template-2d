@@ -21,9 +21,19 @@ public class CameraFollow : MonoBehaviour
   public ScreenEdgeBehaviour screenEdgeBehaviour = ScreenEdgeBehaviour.Clamp;
   public bool followPlayer = true;
 
+  void Awake()
+  {
+    if (cam == null)
+    {
+      cam = GetComponentInChildren<Camera>();
+      if (cam == null)
+      {
+        cam = Camera.main;
+      }
+    }
+  }
   void Start()
   {
-    cam = GetComponent<Camera>();
     GetCameraBounds();
   }
 
@@ -111,6 +121,9 @@ public class CameraFollow : MonoBehaviour
 
   void GetCameraBounds()
   {
+    AspectRatioEnforcer aspectRatioEnforcer = GetComponent<AspectRatioEnforcer>();
+    float targetAspect = aspectRatioEnforcer != null ? aspectRatioEnforcer.targetAspect : cam.aspect;
+
     if (!boundsSize.Equals(Vector2.zero))
     {
       minEdgePos = transform.position + new Vector3(-boundsSize.x / 2, -boundsSize.y / 2, 0);
@@ -129,7 +142,7 @@ public class CameraFollow : MonoBehaviour
       }
       // Get the camera's size
       float height = cam.orthographicSize * 2;
-      float width = height * cam.aspect;
+      float width = height * targetAspect;
 
       // Calculate the bounds for the edges of the camera
       minEdgePos = transform.position - new Vector3(width / 2, height / 2, 0);

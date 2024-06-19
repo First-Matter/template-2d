@@ -1,17 +1,22 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Camera))]
 public class AspectRatioEnforcer : MonoBehaviour
 {
   public float targetAspect = 16f / 10f; // Target aspect ratio (16:10)
   public bool cropX = true;
   public bool cropY = true;
+  [SerializeField] private Camera cam;
 
-  private Camera cam;
-
-  private void Awake()
+  void Awake()
   {
-    cam = GetComponent<Camera>();
+    if (cam == null)
+    {
+      cam = GetComponentInChildren<Camera>();
+      if (cam == null)
+      {
+        cam = Camera.main;
+      }
+    }
   }
 
   private void Update()

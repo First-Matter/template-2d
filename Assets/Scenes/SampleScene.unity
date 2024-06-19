@@ -135,8 +135,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420034}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -262,43 +260,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb00d56e554b216499b88c2eb397814a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetAspect: 1.6
-  cropX: 1
-  cropY: 1
---- !u!114 &519420034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 852fd3a7023da6f44920936263c04c72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Player: {fileID: 1474016325}
-  boundsSize: {x: 15.9930315, y: 10}
-  minEdgePos: {x: -7.9965158, y: -5, z: -10}
-  maxEdgePos: {x: 7.9965158, y: 5, z: -10}
-  cam: {fileID: 519420031}
-  keepPlayerOnScreen: 1
-  refreshGizmos: 0
-  smoothSpeed: 0
-  screenEdgeBehaviour: 1
-  followPlayer: 1
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -381,33 +342,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1012660598 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7376781065416430788, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-  m_PrefabInstance: {fileID: 1531593005}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1012660599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1012660598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 887eb414b9a66b943a176bfb85a84ba9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioHandler:
-    masterVolume: 1
-    musicVolume: 0.7
-    sfxVolume: 0.7
-    music: []
-    sfx: []
-  _volumeControl:
-    masterVolumeSlider: {fileID: 0}
-    musicVolumeSlider: {fileID: 0}
-    sfxVolumeSlider: {fileID: 0}
 --- !u!1 &1474016322
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,9 +448,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2784924713148051935, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 2784924713148051935, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 1474016325}
+    - target: {fileID: 5233904229047073371, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 519420031}
     - target: {fileID: 7376781065416430788, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: m_Name
-      value: ServiceProvider
+      value: GameContext
       objectReference: {fileID: 0}
     - target: {fileID: 8589780492588210166, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -561,10 +507,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7376781065416430788, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1012660599}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
