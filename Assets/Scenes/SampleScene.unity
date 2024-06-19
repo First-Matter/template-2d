@@ -468,14 +468,30 @@ PrefabInstance:
       propertyPath: minEdgePos.x
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2784924713148051935, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: refreshGizmos
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5233904229047073371, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 6936094970943053992, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: 64e76166234767f47afdbd63526ab6c6, type: 2}
     - target: {fileID: 7376781065416430788, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: m_Name
       value: GameContext
       objectReference: {fileID: 0}
+    - target: {fileID: 8481369482590934429, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: _inputHandler.gameData
+      value: 
+      objectReference: {fileID: 11400000, guid: 64e76166234767f47afdbd63526ab6c6, type: 2}
+    - target: {fileID: 8481369482590934429, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: _inputHandler._playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: c3db58a12df09794f9234fed8d428fd3, type: 2}
     - target: {fileID: 8481369482590934429, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: _inputHandler.inputBindings.Array.data[1].keys.Array.size
       value: 2

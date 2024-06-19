@@ -1,5 +1,5 @@
 using UnityEngine;
-using System.Collections;
+using System;
 using System.Collections.Generic;
 
 [System.Serializable]
@@ -7,57 +7,75 @@ public enum Button
 {
   Jump, Fire
 }
+
 [System.Serializable]
 public class PlayerInput : IPlayerInput
 {
-  [SerializeField]
-  private InputBinding[] inputBindings;
-  public bool IsButtonPressed(Button button)
+  [SerializeField] private InputBinding[] inputBindings;
+  [SerializeField] private PlayerInputEvents _playerData;
+
+  public void UpdateInput()
   {
-    foreach (InputBinding binding in inputBindings)
+    foreach (var binding in inputBindings)
     {
-      if (binding.button == button && binding.IsPressed())
+      if (binding.IsPressed())
       {
-        return true;
+        _playerData.InvokeButtonPress(binding.button);
+      }
+      if (binding.IsHeld())
+      {
+        _playerData.InvokeButtonHold(binding.button);
+      }
+      else
+      {
+        _playerData.InvokeButtonRelease(binding.button);
       }
     }
-    return false;
-  }
-  public bool IsButtonHeld(Button button)
-  {
-    foreach (InputBinding binding in inputBindings)
+
+    Vector2 moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+    if (moveDirection != Vector2.zero)
     {
-      if (binding.button == button && binding.IsHeld())
-      {
-        return true;
-      }
+      _playerData.InvokeMove(moveDirection);
     }
-    return false;
   }
-  public float GetAxisHorizontal()
+
+  public void RegisterButtonPressEvent(Button button, Action action)
   {
-    return Input.GetAxis("Horizontal");
+    _playerData.RegisterButtonPressEvent(button, action);
   }
-  public float GetVerticalAxis()
+
+  public void RegisterButtonHoldEvent(Button button, Action action)
   {
-    return Input.GetAxis("Vertical");
+    _playerData.RegisterButtonHoldEvent(button, action);
   }
-  public void SetBinding(Button button, InputBinding binding)
+
+  public void RegisterButtonReleaseEvent(Button button, Action action)
   {
-    for (int i = 0; i < inputBindings.Length; i++)
-    {
-      if (inputBindings[i].button == button)
-      {
-        inputBindings[i] = binding;
-        return;
-      }
-    }
-    InputBinding[] newBindings = new InputBinding[inputBindings.Length + 1];
-    for (int i = 0; i < inputBindings.Length; i++)
-    {
-      newBindings[i] = inputBindings[i];
-    }
-    newBindings[inputBindings.Length] = binding;
-    inputBindings = newBindings;
+    _playerData.RegisterButtonReleaseEvent(button, action);
+  }
+
+  public void RegisterMoveEvent(Action<Vector2> action)
+  {
+    _playerData.RegisterMoveEvent(action);
+  }
+
+  public void UnRegisterButtonPressEvent(Button button, Action action)
+  {
+    _playerData.UnRegisterButtonPressEvent(button, action);
+  }
+
+  public void UnRegisterButtonHoldEvent(Button button, Action action)
+  {
+    _playerData.UnRegisterButtonHoldEvent(button, action);
+  }
+
+  public void UnRegisterButtonReleaseEvent(Button button, Action action)
+  {
+    _playerData.UnRegisterButtonReleaseEvent(button, action);
+  }
+
+  public void UnRegisterMoveEvent(Action<Vector2> action)
+  {
+    _playerData.UnRegisterMoveEvent(action);
   }
 }

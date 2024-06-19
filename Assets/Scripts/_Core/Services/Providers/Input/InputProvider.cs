@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class InputProvider : MonoBehaviour, IProvider<IPlayerInput>
 {
-  [SerializeField]
-  private PlayerInput _inputHandler;
+  [SerializeField] private PlayerInput _inputHandler;
   private void Awake()
   {
     IPlayerInput inputHandler = _inputHandler;

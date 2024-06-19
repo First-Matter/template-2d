@@ -1,12 +1,40 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : InjectableMonoBehaviour
 {
   [Inject] private IPlayerInput inputHandler;
   [SerializeField] private float moveSpeed = 5f;
-  // Start is called before the first frame update
+
+  private void OnEnable()
+  {
+    inputHandler.RegisterMoveEvent(HandleMove);
+    inputHandler.RegisterButtonPressEvent(Button.Jump, HandleJumpPress);
+    inputHandler.RegisterButtonHoldEvent(Button.Fire, HandleFireHold);
+  }
+
+  private void OnDisable()
+  {
+    inputHandler.UnRegisterMoveEvent(HandleMove);
+    inputHandler.UnRegisterButtonPressEvent(Button.Jump, HandleJumpPress);
+    inputHandler.UnRegisterButtonHoldEvent(Button.Fire, HandleFireHold);
+  }
+
+  private void HandleMove(Vector2 direction)
+  {
+    Vector3 move = new Vector3(direction.x, direction.y, 0) * moveSpeed * Time.deltaTime;
+    transform.position += move;
+  }
+
+  private void HandleJumpPress()
+  {
+    // Implement jump logic here
+  }
+
+  private void HandleFireHold()
+  {
+    // Implement fire logic here
+  }
+
   void Start()
   {
     if (inputHandler == null)
@@ -15,14 +43,8 @@ public class PlayerController : InjectableMonoBehaviour
     }
   }
 
-  // Update is called once per frame
   void Update()
   {
-    // Basic 2d top-down movement
-    float horizontal = inputHandler.GetAxisHorizontal();
-    float vertical = inputHandler.GetVerticalAxis();
-
-    Vector3 movement = new Vector3(horizontal, vertical, 0) * moveSpeed * Time.deltaTime;
-    transform.position += movement;
+    inputHandler.UpdateInput();
   }
 }
