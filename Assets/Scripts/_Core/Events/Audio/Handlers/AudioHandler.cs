@@ -4,28 +4,32 @@ using System.Collections.Generic;
 
 public class AudioEventHandler : EventDrivenBehaviour
 {
-  [Listen("SoundChannel")][SerializeField] private EventChannel<Sound> playSoundChannel;
+  [Listen(Repository.SoundRepository)][SerializeField] private EventChannel<Sound> playSoundChannel;
+  private AudioSourcePool audioSourcePool = new AudioSourcePool();
   [Range(0f, 1f)] public float masterVolume = 1f;
   [Range(0f, 1f)] public float musicVolume = 0.7f;
   [Range(0f, 1f)] public float sfxVolume = 0.7f;
   public Sound[] sounds;
+  [Data(Repository.SoundRepository)][SerializeField] private SoundRepository soundRepository;
 
   [SerializeField] private VolumeControl _volumeControl;
-  [SerializeField] private AudioSource globalMusicSource;
-  [SerializeField] private AudioSource globalSfxSource;
-
-  private List<AudioSource> musicSources = new List<AudioSource>();
-  private List<AudioSource> sfxSources = new List<AudioSource>();
 
   private float lastMasterVolume;
   private float lastMusicVolume;
   private float lastSfxVolume;
 
+  private Dictionary<AudioSource, Sound> activeAudioSources = new Dictionary<AudioSource, Sound>();
+
   public bool VolumeChanged => lastMasterVolume != masterVolume || lastMusicVolume != musicVolume || lastSfxVolume != sfxVolume;
 
   void Awake()
   {
-    CreateAudioSources();
+    if (soundRepository != null)
+    {
+      soundRepository.sounds = new List<Sound>(sounds);
+    }
+    audioSourcePool.Initialize(transform);
+    PlayAwakeSources();
     if (!_volumeControl.Initialized)
     {
       Debug.LogWarning("Volume control sliders are not initialized.");
@@ -58,70 +62,28 @@ public class AudioEventHandler : EventDrivenBehaviour
     }
   }
 
-  private void CreateAudioSources()
+  private void PlayAwakeSources()
   {
     foreach (Sound sound in sounds)
     {
-      if (sound.global)
+      if (sound.playOnAwake)
       {
-        GameObject audioSource = new GameObject(sound.name);
-        audioSource.transform.SetParent(transform);
-        sound.source = audioSource.AddComponent<AudioSource>();
-        if (sound.playOnAwake)
-        {
-          PlaySound(sound);
-        }
-      }
-    }
-  }
-
-  private void AddSource(AudioSource source, SoundType type)
-  {
-    if (type == SoundType.Music)
-    {
-      if (!musicSources.Contains(source))
-      {
-        musicSources.Add(source);
-      }
-    }
-    else if (type == SoundType.SFX)
-    {
-      if (!sfxSources.Contains(source))
-      {
-        sfxSources.Add(source);
+        PlaySound(sound);
       }
     }
   }
 
   private void AdjustVolume()
   {
-    AdjustMusicVolume();
-    AdjustSFXVolume();
+    foreach (var entry in activeAudioSources)
+    {
+      AudioSource source = entry.Key;
+      Sound sound = entry.Value;
+      source.volume = sound.volume * (sound.type == SoundType.Music ? musicVolume : sfxVolume) * masterVolume;
+    }
     lastMasterVolume = masterVolume;
     lastMusicVolume = musicVolume;
     lastSfxVolume = sfxVolume;
-  }
-
-  private void AdjustMusicVolume()
-  {
-    foreach (var source in musicSources)
-    {
-      if (source != null)
-      {
-        source.volume = musicVolume * masterVolume;
-      }
-    }
-  }
-
-  private void AdjustSFXVolume()
-  {
-    foreach (var source in sfxSources)
-    {
-      if (source != null)
-      {
-        source.volume = sfxVolume * masterVolume;
-      }
-    }
   }
 
   public void SetMasterVolume(float volume)
@@ -144,18 +106,26 @@ public class AudioEventHandler : EventDrivenBehaviour
 
   private void PlaySound(Sound sound)
   {
-    AudioSource audioSource = sound.source ?? (sound.type == SoundType.Music ? globalMusicSource : globalSfxSource);
-
-    if (audioSource == null)
-    {
-      Debug.LogWarning($"No audio source found for sound: {sound.name}");
-      return;
-    }
-
-    AddSource(audioSource, sound.type);
+    AudioSource audioSource = audioSourcePool.GetAudioSource(transform);
+    audioSource.gameObject.name = sound.name;
     audioSource.clip = sound.clip;
     audioSource.volume = sound.volume * (sound.type == SoundType.Music ? musicVolume : sfxVolume) * masterVolume;
     audioSource.loop = sound.loop;
     audioSource.Play();
+
+    activeAudioSources[audioSource] = sound;
+
+    if (!sound.loop)
+    {
+      StartCoroutine(ReturnToPoolAfterPlaying(audioSource, sound.clip.length));
+    }
+  }
+
+  private System.Collections.IEnumerator ReturnToPoolAfterPlaying(AudioSource source, float duration)
+  {
+    yield return new WaitForSeconds(duration);
+    activeAudioSources.Remove(source);
+    source.gameObject.name = "AudioSource";
+    audioSourcePool.ReturnAudioSource(source);
   }
 }

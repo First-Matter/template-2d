@@ -4,9 +4,11 @@ public class PlayerController : EventDrivenBehaviour
 {
 
   [SerializeField] private float moveSpeed = 5f;
-  [Listen("AxisChannel")][SerializeField] private EventChannel<Vector2> inputAxisChannel;
-  [Listen("ButtonPressedChannel")][SerializeField] private EventChannel<Button> buttonPressedChannel;
-  [Listen("ButtonHeldChannel")][SerializeField] private EventChannel<Button> buttonHeldChannel;
+  [Listen(Channel.AxisChannel)][SerializeField] private EventChannel<Vector2> inputAxisChannel;
+  [Listen(Channel.ButtonPressedChannel)][SerializeField] private EventChannel<Button> buttonPressedChannel;
+  [Listen(Channel.ButtonHeldChannel)][SerializeField] private EventChannel<Button> buttonHeldChannel;
+  [Listen(Channel.SoundChannel)][SerializeField] private EventChannel<Sound> playSoundChannel;
+  [Data(Repository.SoundRepository)][SerializeField] private SoundRepository SoundRepository;
 
   private void OnEnable()
   {
@@ -33,10 +35,10 @@ public class PlayerController : EventDrivenBehaviour
     switch (button)
     {
       case Button.Jump:
-        Debug.Log("Player jumped!");
+        PlaySound("Grenade");
         break;
       case Button.Fire:
-        Debug.Log("Player fired!");
+        PlaySound("Zap");
         break;
     }
   }
@@ -46,5 +48,10 @@ public class PlayerController : EventDrivenBehaviour
     {
       Debug.Log("Player is holding fire button!");
     }
+  }
+  private void PlaySound(string soundName)
+  {
+    Sound grenadeSound = SoundRepository.GetSound(soundName);
+    playSoundChannel.Invoke(grenadeSound);
   }
 }

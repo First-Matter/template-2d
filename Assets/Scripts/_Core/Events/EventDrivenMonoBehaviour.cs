@@ -22,7 +22,7 @@ public class EventDrivenBehaviour : MonoBehaviour
   protected virtual void OnValidate()
   {
     AssignEventChannels();
-    // AssignDataObjects();
+    AssignDataObjects();
   }
 
   /// <summary>
@@ -71,44 +71,48 @@ public class EventDrivenBehaviour : MonoBehaviour
     }
   }
 
-  /// <summary>
-  /// Assigns data ScriptableObjects to fields marked with the <see cref="DataAttribute">[Data]</see> attribute.
-  /// </summary>
-  //   private void AssignDataObjects()
-  //   {
-  //     var fields = GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-  //       .Where(field => Attribute.IsDefined(field, typeof(DataAttribute)));
-  // 
-  //     foreach (var field in fields)
-  //     {
-  //       var attribute = (DataAttribute)Attribute.GetCustomAttribute(field, typeof(DataAttribute));
-  //       if (attribute != null)
-  //       {
-  //         var currentFieldValue = field.GetValue(this);
-  //         if (currentFieldValue == null)
-  //         {
-  //           var dataObject = Resources.Load($"DataObjects/{attribute.DataName}", field.FieldType);
-  //           if (dataObject != null)
-  //           {
-  //             field.SetValue(this, dataObject);
-  //           }
-  // #if UNITY_EDITOR
-  //           else
-  //           {
-  //             Debug.LogWarning($"Could not find a data object of type {field.FieldType} with name {attribute.DataName} in Resources. Creating a new one.");
-  // 
-  //             var newDataObject = ScriptableObject.CreateInstance(field.FieldType);
-  //             if (!Directory.Exists("Assets/Resources/DataObjects"))
-  //             {
-  //               Directory.CreateDirectory("Assets/Resources/DataObjects");
-  //             }
-  //             AssetDatabase.CreateAsset(newDataObject, $"Assets/Resources/DataObjects/{attribute.DataName}.asset");
-  //             AssetDatabase.SaveAssets();
-  //             field.SetValue(this, newDataObject);
-  //           }
-  // #endif
-  //         }
-  //       }
-  //     }
-  //   }
+  // / <summary>
+  // / Assigns data ScriptableObjects to fields marked with the <see cref="DataAttribute">[Data]</see> attribute.
+  // / </summary>
+  private void AssignDataObjects()
+  {
+    var fields = GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
+      .Where(field => Attribute.IsDefined(field, typeof(DataAttribute)));
+
+    foreach (var field in fields)
+    {
+      var attribute = (DataAttribute)Attribute.GetCustomAttribute(field, typeof(DataAttribute));
+      if (attribute != null)
+      {
+        var currentFieldValue = field.GetValue(this);
+        if (currentFieldValue == null)
+        {
+          var dataObject = Resources.Load($"DataObjects/{attribute.DataName}", field.FieldType);
+          if (dataObject != null)
+          {
+            field.SetValue(this, dataObject);
+          }
+#if UNITY_EDITOR
+          else
+          {
+            Debug.LogWarning($"Could not find a data object of type {field.FieldType} with name {attribute.DataName} in Resources. Creating a new one.");
+
+            var newDataObject = ScriptableObject.CreateInstance(field.FieldType);
+            string path = $"Assets/Resources/DataObjects/{attribute.DataName}.asset";
+            string directory = Path.GetDirectoryName(path);
+
+            if (!Directory.Exists(directory))
+            {
+              Directory.CreateDirectory(directory);
+            }
+
+            AssetDatabase.CreateAsset(newDataObject, path);
+            AssetDatabase.SaveAssets();
+            field.SetValue(this, newDataObject);
+          }
+#endif
+        }
+      }
+    }
+  }
 }
