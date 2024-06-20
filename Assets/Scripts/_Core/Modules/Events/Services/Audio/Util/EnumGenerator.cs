@@ -11,7 +11,7 @@ public class EnumGenerator : Editor
   public static void GenerateSoundEnum()
   {
 #if UNITY_EDITOR
-    // Get sound names from the SoundRepository
+    // Get sound names from the GameData
     AudioEventHandler audioHandler = FindObjectOfType<AudioEventHandler>();
 
     // Start building the enum string

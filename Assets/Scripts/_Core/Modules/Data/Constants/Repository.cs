@@ -1,5 +1,5 @@
 using System;
 public static class Repository
 {
-  public const string SoundRepository = "Repositories/SoundRepository";
+  public const string GameData = "Repositories/GameData";
 }

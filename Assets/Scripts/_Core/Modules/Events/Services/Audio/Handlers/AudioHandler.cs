@@ -10,7 +10,7 @@ public class AudioEventHandler : EventDrivenBehaviour
   [Range(0f, 1f)] public float musicVolume = 0.7f;
   [Range(0f, 1f)] public float sfxVolume = 0.7f;
   public Sound[] sounds;
-  [Data(Repository.SoundRepository)][SerializeField] private SoundRepository soundRepository;
+  [Data][SerializeField] private GameData gameData;
 
   [SerializeField] private VolumeControl _volumeControl;
 
@@ -24,9 +24,9 @@ public class AudioEventHandler : EventDrivenBehaviour
 
   void Awake()
   {
-    if (soundRepository != null)
+    if (gameData != null)
     {
-      soundRepository.sounds = new List<Sound>(sounds);
+      gameData.sounds = new List<Sound>(sounds);
     }
     audioSourcePool.Initialize(transform);
     PlayAwakeSources();
@@ -132,7 +132,7 @@ public class AudioEventHandler : EventDrivenBehaviour
 
   private void PlaySound(RegisteredSound soundName)
   {
-    Sound sound = soundRepository.GetSound(soundName);
+    Sound sound = gameData.GetSound(soundName);
     if (sound == null)
     {
       Debug.LogWarning($"Sound {soundName} not found in repository.");

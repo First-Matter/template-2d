@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "SoundRepository", menuName = "Data/Audio/SoundRepository")]
-public class SoundRepository : ScriptableObject
+[CreateAssetMenu(fileName = "GameData", menuName = "Data/Audio/GameData")]
+public class GameData : ScriptableObject
 {
   public List<Sound> sounds;
 

@@ -87,7 +87,7 @@ public class EventDrivenBehaviour : MonoBehaviour
         var currentFieldValue = field.GetValue(this);
         if (currentFieldValue == null)
         {
-          var dataObject = Resources.Load($"DataObjects/{attribute.DataName}", field.FieldType);
+          var dataObject = Resources.Load($"DataObjects/GameData", field.FieldType);
           if (dataObject != null)
           {
             field.SetValue(this, dataObject);
@@ -95,10 +95,10 @@ public class EventDrivenBehaviour : MonoBehaviour
 #if UNITY_EDITOR
           else
           {
-            Debug.LogWarning($"Could not find a data object of type {field.FieldType} with name {attribute.DataName} in Resources. Creating a new one.");
+            Debug.LogWarning($"Could not find a data object of type {field.FieldType} with name GameData in Resources. Creating a new one.");
 
             var newDataObject = ScriptableObject.CreateInstance(field.FieldType);
-            string path = $"Assets/Resources/DataObjects/{attribute.DataName}.asset";
+            string path = $"Assets/Resources/DataObjects/GameData.asset";
             string directory = Path.GetDirectoryName(path);
 
             if (!Directory.Exists(directory))
