@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dev : InjectableMonoBehaviour
+public class Dev : EventDrivenBehaviour
 {
-  [Inject] private IGameAudio _audioHandler;
-  [Inject] private IPlayerInput _inputHandler;
+  // [Inject] private IGameAudio _audioHandler;
+  [Listen("AxisChannel")][SerializeField] private EventChannel<Vector2> inputAxisChannel;
+  [Listen("ButtonPressedChannel")][SerializeField] private EventChannel<Button> buttonPressedChannel;
+  [Listen("ButtonHeldChannel")][SerializeField] private EventChannel<Button> buttonHeldChannel;
+  [Listen("ButtonReleasedChannel")][SerializeField] private EventChannel<Button> buttonReleasedChannel;
   public bool enableLogging = false;
   public float timeBeforeButtonHeldLog = 0.2f;
   private static Dev Instance;
@@ -24,9 +27,8 @@ public class Dev : InjectableMonoBehaviour
   private float verticalAxis;
   private float lastVerticalAxis;
 
-  protected override void Awake()
+  void Awake()
   {
-    base.Awake();
     if (Instance == null)
     {
       Instance = this;
@@ -39,33 +41,25 @@ public class Dev : InjectableMonoBehaviour
 
   public void Start()
   {
-    if (_audioHandler == null)
-    {
-      Debug.LogError("Audio service not found.");
-    }
-    if (_inputHandler == null)
-    {
-      Debug.LogError("Input service not found.");
-    }
+    // if (_audioHandler == null)
+    // {
+    //   Debug.LogError("Audio service not found.");
+    // }
 
     // Register events
-    _inputHandler.RegisterButtonPressEvent(Button.Jump, () => HandleButtonPress(Button.Jump));
-    _inputHandler.RegisterButtonPressEvent(Button.Fire, () => HandleButtonPress(Button.Fire));
-    _inputHandler.RegisterButtonHoldEvent(Button.Jump, () => HandleButtonHold(Button.Jump));
-    _inputHandler.RegisterButtonHoldEvent(Button.Fire, () => HandleButtonHold(Button.Fire));
-    _inputHandler.RegisterButtonReleaseEvent(Button.Jump, () => HandleButtonRelease(Button.Jump));
-    _inputHandler.RegisterButtonReleaseEvent(Button.Fire, () => HandleButtonRelease(Button.Fire));
-    _inputHandler.RegisterMoveEvent(HandleMove);
+    buttonPressedChannel.RegisterEvent(HandleButtonPress);
+    buttonHeldChannel.RegisterEvent(HandleButtonHold);
+    buttonReleasedChannel.RegisterEvent(HandleButtonRelease);
+    inputAxisChannel.RegisterEvent(HandleMove);
   }
-  public void OnDisable()
+
+  private void OnDisable()
   {
-    _inputHandler.UnRegisterButtonPressEvent(Button.Jump, () => HandleButtonPress(Button.Jump));
-    _inputHandler.UnRegisterButtonPressEvent(Button.Fire, () => HandleButtonPress(Button.Fire));
-    _inputHandler.UnRegisterButtonHoldEvent(Button.Jump, () => HandleButtonHold(Button.Jump));
-    _inputHandler.UnRegisterButtonHoldEvent(Button.Fire, () => HandleButtonHold(Button.Fire));
-    _inputHandler.UnRegisterButtonReleaseEvent(Button.Jump, () => HandleButtonRelease(Button.Jump));
-    _inputHandler.UnRegisterButtonReleaseEvent(Button.Fire, () => HandleButtonRelease(Button.Fire));
-    _inputHandler.UnRegisterMoveEvent(HandleMove);
+    // Unregister events
+    buttonPressedChannel.UnRegisterEvent(HandleButtonPress);
+    buttonHeldChannel.UnRegisterEvent(HandleButtonHold);
+    buttonReleasedChannel.UnRegisterEvent(HandleButtonRelease);
+    inputAxisChannel.UnRegisterEvent(HandleMove);
   }
 
   private void HandleButtonPress(Button button)
@@ -80,14 +74,17 @@ public class Dev : InjectableMonoBehaviour
 
   private void HandleButtonHold(Button button)
   {
-    var state = actionStates[button];
-    if (state.WasPressed && !state.WasHeld)
+    if (actionStates.ContainsKey(button))
     {
-      state.HoldTimer += Time.deltaTime;
-      if (state.HoldTimer >= timeBeforeButtonHeldLog)
+      var state = actionStates[button];
+      if (state.WasPressed && !state.WasHeld)
       {
-        Log($"{button} button held.");
-        state.WasHeld = true;
+        state.HoldTimer += Time.deltaTime;
+        if (state.HoldTimer >= timeBeforeButtonHeldLog)
+        {
+          Log($"{button} button held.");
+          state.WasHeld = true;
+        }
       }
     }
   }

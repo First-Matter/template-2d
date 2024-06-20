@@ -1,22 +1,25 @@
 using UnityEngine;
 
-public class PlayerController : InjectableMonoBehaviour
+public class PlayerController : EventDrivenBehaviour
 {
-  [Inject] private IPlayerInput inputHandler;
+
   [SerializeField] private float moveSpeed = 5f;
+  [Listen("AxisChannel")][SerializeField] private EventChannel<Vector2> inputAxisChannel;
+  [Listen("ButtonPressedChannel")][SerializeField] private EventChannel<Button> buttonPressedChannel;
+  [Listen("ButtonHeldChannel")][SerializeField] private EventChannel<Button> buttonHeldChannel;
 
   private void OnEnable()
   {
-    inputHandler.RegisterMoveEvent(HandleMove);
-    inputHandler.RegisterButtonPressEvent(Button.Jump, HandleJumpPress);
-    inputHandler.RegisterButtonHoldEvent(Button.Fire, HandleFireHold);
+    inputAxisChannel.RegisterEvent(HandleMove);
+    buttonPressedChannel.RegisterEvent(HandleButtonPress);
+    buttonHeldChannel.RegisterEvent(HandleButtonHold);
   }
 
   private void OnDisable()
   {
-    inputHandler.UnRegisterMoveEvent(HandleMove);
-    inputHandler.UnRegisterButtonPressEvent(Button.Jump, HandleJumpPress);
-    inputHandler.UnRegisterButtonHoldEvent(Button.Fire, HandleFireHold);
+    inputAxisChannel.UnRegisterEvent(HandleMove);
+    buttonPressedChannel.UnRegisterEvent(HandleButtonPress);
+    buttonHeldChannel.UnRegisterEvent(HandleButtonHold);
   }
 
   private void HandleMove(Vector2 direction)
@@ -25,21 +28,23 @@ public class PlayerController : InjectableMonoBehaviour
     transform.position += move;
   }
 
-  private void HandleJumpPress()
+  private void HandleButtonPress(Button button)
   {
-    // Implement jump logic here
-  }
-
-  private void HandleFireHold()
-  {
-    // Implement fire logic here
-  }
-
-  void Start()
-  {
-    if (inputHandler == null)
+    switch (button)
     {
-      Debug.LogError("InputHandler service not found.");
+      case Button.Jump:
+        Debug.Log("Player jumped!");
+        break;
+      case Button.Fire:
+        Debug.Log("Player fired!");
+        break;
+    }
+  }
+  private void HandleButtonHold(Button button)
+  {
+    if (button == Button.Fire)
+    {
+      Debug.Log("Player is holding fire button!");
     }
   }
 }

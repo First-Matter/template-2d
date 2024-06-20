@@ -373,6 +373,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+  inputAxisChannel: {fileID: 11400000, guid: 21c7a80465f08a94880d876867bc51e8, type: 2}
+  buttonPressedChannel: {fileID: 11400000, guid: d4b6692f172b0284abae6959951c0976, type: 2}
+  buttonHeldChannel: {fileID: 11400000, guid: 10d1ba022f16e2140a7f4aa667f81ab5, type: 2}
 --- !u!212 &1474016324
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -448,34 +451,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1212792960220371655, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: _audioHandler.masterVolume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1212792960220371655, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: _audioHandler.music.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1212792960220371655, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: _audioHandler.music.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: e59a4f41c787b2e4ca1335e66199028c, type: 3}
-    - target: {fileID: 1212792960220371655, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: _audioHandler.music.Array.data[0].name
-      value: Theme
-      objectReference: {fileID: 0}
-    - target: {fileID: 1212792960220371655, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: _audioHandler.music.Array.data[0].global
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1212792960220371655, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: _audioHandler.music.Array.data[0].volume
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1212792960220371655, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: _audioHandler.music.Array.data[0].playOnAwake
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2784924713148051935, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: cam
       value: 
@@ -484,49 +459,13 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1474016325}
-    - target: {fileID: 2784924713148051935, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: boundsSize.x
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784924713148051935, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: maxEdgePos.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784924713148051935, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: minEdgePos.x
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 2784924713148051935, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: refreshGizmos
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5233904229047073371, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 6936094970943053992, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: gameData
-      value: 
-      objectReference: {fileID: 11400000, guid: 64e76166234767f47afdbd63526ab6c6, type: 2}
     - target: {fileID: 7376781065416430788, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: m_Name
       value: GameContext
-      objectReference: {fileID: 0}
-    - target: {fileID: 8481369482590934429, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: _inputHandler.gameData
-      value: 
-      objectReference: {fileID: 11400000, guid: 64e76166234767f47afdbd63526ab6c6, type: 2}
-    - target: {fileID: 8481369482590934429, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: _inputHandler._playerData
-      value: 
-      objectReference: {fileID: 11400000, guid: c3db58a12df09794f9234fed8d428fd3, type: 2}
-    - target: {fileID: 8481369482590934429, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: _inputHandler.inputBindings.Array.data[1].keys.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8481369482590934429, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: _inputHandler.inputBindings.Array.data[1].keys.Array.data[1]
-      value: 306
       objectReference: {fileID: 0}
     - target: {fileID: 8589780492588210166, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: m_LocalPosition.x
