@@ -10,6 +10,7 @@ public class Dev : EventDrivenBehaviour
   public bool enableLogging = false;
   public float timeBeforeButtonHeldLog = 0.2f;
   private static Dev Instance;
+  public bool logging;
   private List<string> _logs = new List<string>();
 
   public class ActionState
@@ -40,12 +41,6 @@ public class Dev : EventDrivenBehaviour
 
   public void Start()
   {
-    // if (_audioHandler == null)
-    // {
-    //   Debug.LogError("Audio service not found.");
-    // }
-
-    // Register events
     buttonPressedChannel.RegisterEvent(HandleButtonPress);
     buttonHeldChannel.RegisterEvent(HandleButtonHold);
     buttonReleasedChannel.RegisterEvent(HandleButtonRelease);

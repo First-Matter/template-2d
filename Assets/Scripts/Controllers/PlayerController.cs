@@ -7,7 +7,7 @@ public class PlayerController : EventDrivenBehaviour
 
   [SerializeField] private float moveSpeed = 5f;
   [Listen(Mediator.Input)][SerializeField] private InputMediator input;
-  [Listen(Channel.SoundChannel)][SerializeField] private IBroadcast<Sound> playSoundChannel;
+  [Listen(Channel.SoundChannel)][SerializeField] private SoundChannel playSoundChannel;
   [Data(Repository.SoundRepository)][SerializeField] private SoundRepository SoundRepository;
 
   private void OnEnable()
@@ -31,15 +31,14 @@ public class PlayerController : EventDrivenBehaviour
   }
   private void HandleJumpPressed()
   {
-    PlaySound("Grenade");
+    PlaySound(RegisteredSound.Grenade);
   }
   private void HandleFirePressed()
   {
-    PlaySound("Zap");
+    PlaySound(RegisteredSound.Zap);
   }
-  private void PlaySound(string soundName)
+  private void PlaySound(RegisteredSound soundName)
   {
-    Sound grenadeSound = SoundRepository.GetSound(soundName);
-    playSoundChannel.Invoke(grenadeSound);
+    playSoundChannel.Invoke(soundName);
   }
 }

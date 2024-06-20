@@ -6,8 +6,9 @@ public class SoundRepository : ScriptableObject
 {
   public List<Sound> sounds;
 
-  public Sound GetSound(string name)
+  public Sound GetSound(RegisteredSound name)
   {
-    return sounds.Find(sound => sound.name == name);
+    string soundName = name.ToString();
+    return sounds.Find(sound => sound.name == soundName);
   }
 }

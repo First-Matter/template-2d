@@ -1,12 +1,12 @@
-// using UnityEngine;
-// 
-// public class PlaySound : EventDrivenBehaviour
-// {
-//   // [Inject] private IGameAudio _audioHandler;
-//   public string soundName;
-//   void Start()
-//   {
-//     AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-//     _audioHandler.PlaySound(soundName, audioSource);
-//   }
-// }
+using System;
+using UnityEngine;
+
+public class PlaySound : EventDrivenBehaviour
+{
+  [Listen(Channel.SoundChannel)][SerializeField] private SoundChannel _soundChannel;
+  public RegisteredSound soundName;
+  void Awake()
+  {
+    _soundChannel.Invoke(soundName);
+  }
+}

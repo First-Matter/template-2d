@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class AudioEventHandler : EventDrivenBehaviour
 {
-  [Listen(Channel.SoundChannel)][SerializeField] private EventChannel<Sound> playSoundChannel;
+  [Listen(Channel.SoundChannel)][SerializeField] private SoundChannel playSoundChannel;
   private AudioSourcePool audioSourcePool = new AudioSourcePool();
   [Range(0f, 1f)] public float masterVolume = 1f;
   [Range(0f, 1f)] public float musicVolume = 0.7f;
@@ -53,7 +53,26 @@ public class AudioEventHandler : EventDrivenBehaviour
   {
     playSoundChannel.UnRegisterEvent(PlaySound);
   }
-
+  [SerializeField] private int previousSoundsHash;
+  protected override void OnValidate()
+  {
+    base.OnValidate();
+    var currentSoundsHash = GetSoundsHash();
+    if (currentSoundsHash != previousSoundsHash)
+    {
+      EnumGenerator.GenerateSoundEnum();
+      previousSoundsHash = GetSoundsHash();
+    }
+  }
+  private int GetSoundsHash()
+  {
+    var soundNames = new List<string>();
+    foreach (var sound in sounds)
+    {
+      soundNames.Add(sound.name);
+    }
+    return string.Join(",", soundNames).GetHashCode();
+  }
   private void Update()
   {
     if (VolumeChanged)
@@ -68,7 +87,14 @@ public class AudioEventHandler : EventDrivenBehaviour
     {
       if (sound.playOnAwake)
       {
-        PlaySound(sound);
+        if (System.Enum.TryParse(sound.name, out RegisteredSound soundName))
+        {
+          PlaySound(soundName);
+        }
+        else
+        {
+          Debug.LogError($"Sound name {sound.name} could not be parsed to Sounds enum");
+        }
       }
     }
   }
@@ -104,8 +130,14 @@ public class AudioEventHandler : EventDrivenBehaviour
     AdjustVolume();
   }
 
-  private void PlaySound(Sound sound)
+  private void PlaySound(RegisteredSound soundName)
   {
+    Sound sound = soundRepository.GetSound(soundName);
+    if (sound == null)
+    {
+      Debug.LogWarning($"Sound {soundName} not found in repository.");
+      return;
+    }
     AudioSource audioSource = audioSourcePool.GetAudioSource(transform);
     audioSource.gameObject.name = sound.name;
     audioSource.clip = sound.clip;
