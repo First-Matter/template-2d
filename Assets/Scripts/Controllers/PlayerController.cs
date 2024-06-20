@@ -4,10 +4,10 @@ public class PlayerController : EventDrivenBehaviour
 {
 
   [SerializeField] private float moveSpeed = 5f;
-  [Listen(Channel.AxisChannel)][SerializeField] private EventChannel<Vector2> inputAxisChannel;
-  [Listen(Channel.ButtonPressedChannel)][SerializeField] private EventChannel<Button> buttonPressedChannel;
-  [Listen(Channel.ButtonHeldChannel)][SerializeField] private EventChannel<Button> buttonHeldChannel;
-  [Listen(Channel.SoundChannel)][SerializeField] private EventChannel<Sound> playSoundChannel;
+  [Listen(Channel.AxisChannel)][SerializeField] private IListen<Vector2> inputAxisChannel;
+  [Listen(Channel.ButtonPressedChannel)][SerializeField] private IListen<Button> buttonPressedChannel;
+  [Listen(Channel.ButtonHeldChannel)][SerializeField] private IListen<Button> buttonHeldChannel;
+  [Listen(Channel.SoundChannel)][SerializeField] private IBroadcast<Sound> playSoundChannel;
   [Data(Repository.SoundRepository)][SerializeField] private SoundRepository SoundRepository;
 
   private void OnEnable()
