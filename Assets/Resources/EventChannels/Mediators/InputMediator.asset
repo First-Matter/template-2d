@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 586b66ef6c3bb78408ebe8390f648013, type: 3}
+  m_Name: InputMediator
+  m_EditorClassIdentifier: 
+  inputAxisChannel: {fileID: 11400000, guid: 21c7a80465f08a94880d876867bc51e8, type: 2}
+  buttonPressedChannel: {fileID: 11400000, guid: d4b6692f172b0284abae6959951c0976, type: 2}
+  buttonHeldChannel: {fileID: 11400000, guid: 676355df9012d1c4d81132a11c597f78, type: 2}
+  buttonReleasedChannel: {fileID: 11400000, guid: f8e8906484ee5c2419856f6de3c5ec68, type: 2}

@@ -1,27 +1,27 @@
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 public class PlayerController : EventDrivenBehaviour
 {
 
   [SerializeField] private float moveSpeed = 5f;
-  [Listen(Channel.AxisChannel)][SerializeField] private IListen<Vector2> inputAxisChannel;
-  [Listen(Channel.ButtonPressedChannel)][SerializeField] private IListen<Button> buttonPressedChannel;
-  [Listen(Channel.ButtonHeldChannel)][SerializeField] private IListen<Button> buttonHeldChannel;
+  [Listen(Mediator.Input)][SerializeField] private InputMediator input;
   [Listen(Channel.SoundChannel)][SerializeField] private IBroadcast<Sound> playSoundChannel;
   [Data(Repository.SoundRepository)][SerializeField] private SoundRepository SoundRepository;
 
   private void OnEnable()
   {
-    inputAxisChannel.RegisterEvent(HandleMove);
-    buttonPressedChannel.RegisterEvent(HandleButtonPress);
-    buttonHeldChannel.RegisterEvent(HandleButtonHold);
+    input.RegisterButtonPressedAction(Button.Jump, HandleJumpPressed);
+    input.RegisterButtonPressedAction(Button.Fire, HandleFirePressed);
+    input.RegisterMoveAction(HandleMove);
   }
 
   private void OnDisable()
   {
-    inputAxisChannel.UnRegisterEvent(HandleMove);
-    buttonPressedChannel.UnRegisterEvent(HandleButtonPress);
-    buttonHeldChannel.UnRegisterEvent(HandleButtonHold);
+    input.UnRegisterButtonPressedAction(Button.Jump, HandleJumpPressed);
+    input.UnRegisterButtonPressedAction(Button.Fire, HandleFirePressed);
+    input.UnRegisterMoveAction(HandleMove);
   }
 
   private void HandleMove(Vector2 direction)
@@ -29,25 +29,13 @@ public class PlayerController : EventDrivenBehaviour
     Vector3 move = new Vector3(direction.x, direction.y, 0) * moveSpeed * Time.deltaTime;
     transform.position += move;
   }
-
-  private void HandleButtonPress(Button button)
+  private void HandleJumpPressed()
   {
-    switch (button)
-    {
-      case Button.Jump:
-        PlaySound("Grenade");
-        break;
-      case Button.Fire:
-        PlaySound("Zap");
-        break;
-    }
+    PlaySound("Grenade");
   }
-  private void HandleButtonHold(Button button)
+  private void HandleFirePressed()
   {
-    if (button == Button.Fire)
-    {
-      Debug.Log("Player is holding fire button!");
-    }
+    PlaySound("Zap");
   }
   private void PlaySound(string soundName)
   {

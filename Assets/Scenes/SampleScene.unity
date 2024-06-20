@@ -373,11 +373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  inputAxisChannel: {fileID: 11400000, guid: 21c7a80465f08a94880d876867bc51e8, type: 2}
-  buttonPressedChannel: {fileID: 11400000, guid: d4b6692f172b0284abae6959951c0976, type: 2}
-  buttonHeldChannel: {fileID: 11400000, guid: 676355df9012d1c4d81132a11c597f78, type: 2}
-  playSoundChannel: {fileID: 11400000, guid: abb206bfd345a134dacec79149ebf645, type: 2}
-  SoundRepository: {fileID: 11400000, guid: 509dae52fc008ce49b26c5c0bbaf9089, type: 2}
+  input: {fileID: 11400000, guid: 22169c666c04b114083089c75d1a271b, type: 2}
+  SoundRepository: {fileID: 11400000, guid: 49cb3016937701a4f9952c15b2bff2dd, type: 2}
 --- !u!212 &1474016324
 SpriteRenderer:
   m_ObjectHideFlags: 0
