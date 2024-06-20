@@ -461,50 +461,6 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1474016325}
-    - target: {fileID: 3379226027157223161, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: sounds.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379226027157223161, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: sounds.Array.data[1].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 6ba63986119ca9648a0f086897e8e0f4, type: 3}
-    - target: {fileID: 3379226027157223161, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: sounds.Array.data[1].name
-      value: Grenade
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379226027157223161, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: sounds.Array.data[1].type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379226027157223161, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: sounds.Array.data[2].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: ea6f6b3c645c8c54c84b497d42b645b9, type: 3}
-    - target: {fileID: 3379226027157223161, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: sounds.Array.data[2].name
-      value: Zap
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379226027157223161, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: sounds.Array.data[2].type
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379226027157223161, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: sounds.Array.data[1].global
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379226027157223161, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: sounds.Array.data[1].volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379226027157223161, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: sounds.Array.data[2].volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3379226027157223161, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: sounds.Array.data[1].playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5233904229047073371, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: cam
       value: 
@@ -554,8 +510,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 891469579649460776, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
