@@ -451,42 +451,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2972612914385390356, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: manaBarColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2972612914385390356, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: manaBarColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2972612914385390356, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: manaBarColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2972612914385390356, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: healthBarColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2972612914385390356, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: healthBarColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2972612914385390356, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: healthBarColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3638278300409557793, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: m_Name
-      value: HealthBar
-      objectReference: {fileID: 0}
-    - target: {fileID: 3907569533453223786, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3907569533453223786, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4387250815877649851, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: cam
       value: 
@@ -495,14 +459,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 5471332799320752170, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: barUpdateChannel
-      value: 
-      objectReference: {fileID: 11400000, guid: 59f912822c93bae46a6837eb89db8833, type: 2}
-    - target: {fileID: 5471332799320752170, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      propertyPath: lastBarUpdateChannel
-      value: 
-      objectReference: {fileID: 11400000, guid: 59f912822c93bae46a6837eb89db8833, type: 2}
     - target: {fileID: 5680794825354091309, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: cam
       value: 
