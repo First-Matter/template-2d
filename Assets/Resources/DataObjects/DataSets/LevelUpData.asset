@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 067ea8d57f6229447b122d8881be635f, type: 3}
-  m_Name: ExpData
+  m_Script: {fileID: 11500000, guid: 73144eb417ba0ac47aec6b9ca42c1d43, type: 3}
+  m_Name: LevelUpData
   m_EditorClassIdentifier: 
-  value: 78
-  maxValue: 511
-  updateChannel: {fileID: 11400000, guid: 3166252f49ba34d47a7a260c321274a0, type: 2}
+  currentLevel: 10
   maxExpMultiplier: 1.2
-  gameData: {fileID: 11400000, guid: e19aeb9ef0285bc49bd80338125f31e5, type: 2}
+  levelUpEventChannel: {fileID: 11400000, guid: ec472c9c8986f0544972f5eff0e421d5, type: 2}
+  sceneResetBehaviour: 0

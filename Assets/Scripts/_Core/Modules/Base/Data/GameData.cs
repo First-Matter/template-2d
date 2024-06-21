@@ -9,4 +9,5 @@ public class GameData : ScriptableObject
   public HealthData playerHealth;
   public ManaData playerMana;
   public ExpData playerExp;
+  public LevelData levelUpData;
 }
