@@ -9,6 +9,7 @@ public class LevelData : ScriptableObject
   public LevelUpEventChannel levelUpEventChannel;
   public LevelResetBehaviour sceneResetBehaviour = LevelResetBehaviour.ResetForAllScenes;
   private string _textFormat = "Level: {0}";
+
   public string TextFormat
   {
     get => _textFormat;
@@ -25,25 +26,22 @@ public class LevelData : ScriptableObject
     levelUpEventChannel.Invoke(currentLevel);
     Dev.Log($"Leveled up to level {currentLevel}");
   }
-  public int GetLevel()
-  {
-    return currentLevel;
-  }
+
+  public int GetLevel() => currentLevel;
+
   public void ResetLevel()
   {
     if (sceneResetBehaviour == LevelResetBehaviour.ResetForAllScenes)
     {
       currentLevel = 1;
     }
-    else if (sceneResetBehaviour == LevelResetBehaviour.ResetForFirstScene)
+    else if (sceneResetBehaviour == LevelResetBehaviour.ResetForFirstScene && SceneManager.GetActiveScene().buildIndex == 0)
     {
-      if (SceneManager.GetActiveScene().buildIndex == 0)
-      {
-        currentLevel = 1;
-      }
+      currentLevel = 1;
     }
   }
 }
+
 public enum LevelResetBehaviour
 {
   ResetForFirstScene,

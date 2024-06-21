@@ -107,11 +107,55 @@ MonoBehaviour:
 
     High Score: {1}'
   levelTextFormat: 'Level: {0}'
-  scoreResetBehaviour: 0
-  levelResetBehaviour: 0
   healthBarColor: {r: 1, g: 0, b: 0, a: 1}
   manaBarColor: {r: 0, g: 0, b: 1, a: 1}
   expBarColor: {r: 0, g: 1, b: 0, a: 1}
+--- !u!1 &1832590647051401961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5832648525959005990}
+  - component: {fileID: 7865344341524765374}
+  m_Layer: 0
+  m_Name: GameSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5832648525959005990
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832590647051401961}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8589780492588210166}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7865344341524765374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832590647051401961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1559043aac5b5c840a129b6924c73639, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreResetBehaviour: 0
+  levelResetBehaviour: 0
 --- !u!1 &3578624235327847346
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,6 +491,7 @@ Transform:
   - {fileID: 7433465506176574124}
   - {fileID: 3509634537291251797}
   - {fileID: 4869545820531788848}
+  - {fileID: 5832648525959005990}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6936094970943053992
