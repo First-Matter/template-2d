@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class InputEventHandler : EventDrivenBehaviour
 {
-  [Listen(Channel.ButtonPressedChannel)][SerializeField] private EventChannel<Button> buttonPressedChannel;
-  [Listen(Channel.ButtonHeldChannel)][SerializeField] private EventChannel<Button> buttonHeldChannel;
-  [Listen(Channel.ButtonReleasedChannel)][SerializeField] private EventChannel<Button> buttonReleasedChannel;
-  [Listen(Channel.AxisChannel)][SerializeField] private EventChannel<Vector2> inputAxisChannel;
+  [Subscribe(Channel.ButtonPressedChannel)][SerializeField] private EventChannel<Button> buttonPressedChannel;
+  [Subscribe(Channel.ButtonHeldChannel)][SerializeField] private EventChannel<Button> buttonHeldChannel;
+  [Subscribe(Channel.ButtonReleasedChannel)][SerializeField] private EventChannel<Button> buttonReleasedChannel;
+  [Subscribe(Channel.AxisChannel)][SerializeField] private EventChannel<Vector2> inputAxisChannel;
   [SerializeField] private InputBinding[] inputBindings;
 
   private void Update()

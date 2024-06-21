@@ -10,7 +10,7 @@ using UnityEditor;
 
 /// <summary>
 /// Base class for MonoBehaviours with event channel and data ScriptableObject injection.
-/// Automatically assigns event channels to fields marked with the <see cref="ListenAttribute">[Listen]</see> attribute
+/// Automatically assigns event channels to fields marked with the <see cref="SubscribeAttribute">[Subscribe]</see> attribute
 /// and data ScriptableObjects to fields marked with the <see cref="DataAttribute">[Data]</see> attribute.
 /// </summary>
 public class EventDrivenBehaviour : MonoBehaviour
@@ -26,16 +26,16 @@ public class EventDrivenBehaviour : MonoBehaviour
   }
 
   /// <summary>
-  /// Assigns event channels to fields marked with the <see cref="ListenAttribute">[Listen]</see> attribute.
+  /// Assigns event channels to fields marked with the <see cref="SubscribeAttribute">[Subscribe]</see> attribute.
   /// </summary>
   private void AssignEventChannels()
   {
     var fields = GetType().GetFields(BindingFlags.NonPublic | BindingFlags.Public | BindingFlags.Instance)
-      .Where(field => Attribute.IsDefined(field, typeof(ListenAttribute)));
+      .Where(field => Attribute.IsDefined(field, typeof(SubscribeAttribute)));
 
     foreach (var field in fields)
     {
-      var attribute = (ListenAttribute)Attribute.GetCustomAttribute(field, typeof(ListenAttribute));
+      var attribute = (SubscribeAttribute)Attribute.GetCustomAttribute(field, typeof(SubscribeAttribute));
       if (attribute != null)
       {
         var currentFieldValue = field.GetValue(this);

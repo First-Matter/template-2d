@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class AudioEventHandler : EventDrivenBehaviour
 {
-  [Listen(Channel.SoundChannel)][SerializeField] private SoundChannel playSoundChannel;
+  [Subscribe(Channel.SoundChannel)][SerializeField] private SoundChannel playSoundChannel;
   private AudioSourcePool audioSourcePool = new AudioSourcePool();
   [Range(0f, 1f)] public float masterVolume = 1f;
   [Range(0f, 1f)] public float musicVolume = 0.7f;

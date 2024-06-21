@@ -1,11 +1,11 @@
 using System;
 
 [AttributeUsage(AttributeTargets.Field)]
-public class ListenAttribute : Attribute
+public class SubscribeAttribute : Attribute
 {
   public string ChannelName;
 
-  public ListenAttribute(string channelName)
+  public SubscribeAttribute(string channelName)
   {
     ChannelName = channelName;
   }

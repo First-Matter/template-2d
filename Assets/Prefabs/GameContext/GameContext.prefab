@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _scoreChannel: {fileID: 11400000, guid: 656370b23d9e0bc48800d87ee087c8c5, type: 2}
+  scoreUpdateChannel: {fileID: 11400000, guid: 517739969eae268489d2759e3cf01c69, type: 2}
   gameData: {fileID: 11400000, guid: e19aeb9ef0285bc49bd80338125f31e5, type: 2}
   sceneLoadScoreBehavior: 0
   scoreMultiplier: 1
@@ -119,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 6747456608367794854}
   gameData: {fileID: 11400000, guid: e19aeb9ef0285bc49bd80338125f31e5, type: 2}
+  scoreUpdateChannel: {fileID: 11400000, guid: 517739969eae268489d2759e3cf01c69, type: 2}
 --- !u!1 &2611685998424184684
 GameObject:
   m_ObjectHideFlags: 0

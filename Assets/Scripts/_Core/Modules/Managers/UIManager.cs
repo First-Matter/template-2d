@@ -6,21 +6,16 @@ public class UIManager : EventDrivenBehaviour
 {
   [SerializeField] private TextMeshProUGUI scoreText;
   [Data][SerializeField] private GameData gameData;
-  private int lastScore = -1;
-
-  void Awake()
+  [Subscribe(Channel.ScoreUpdateChannel)][SerializeField] private ScoreUpdateChannel scoreUpdateChannel;
+  private void OnEnable()
   {
-
+    scoreUpdateChannel.RegisterEvent(UpdateScoreText);
+  }
+  private void OnDisable()
+  {
+    scoreUpdateChannel.UnRegisterEvent(UpdateScoreText);
   }
 
-  void Update()
-  {
-    if (lastScore != gameData.scoreData.score)
-    {
-      lastScore = gameData.scoreData.score;
-      UpdateScoreText(gameData.scoreData.GetScore());
-    }
-  }
   private void UpdateScoreText(ScoreObject scores)
   {
     scoreText.text = "Score: " + scores.score + "\nHigh Score: " + scores.highScore;

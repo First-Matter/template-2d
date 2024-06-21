@@ -6,7 +6,9 @@ using UnityEditor.EditorTools;
 
 public class ScoreEventHandler : EventDrivenBehaviour
 {
-  [Listen(Channel.ScoreChannel)][SerializeField] private ScoreChannel _scoreChannel;
+  [Subscribe(Channel.ScoreChannel)][SerializeField] private ScoreChannel _scoreChannel;
+  [Subscribe(Channel.ScoreUpdateChannel)][SerializeField] private ScoreUpdateChannel scoreUpdateChannel;
+
   [Data][SerializeField] private GameData gameData;
   private enum SceneLoadScoreBehavior { Reset, Keep };
   [Tooltip("When the next scene is loaded, should the score be reset or kept?")]
@@ -23,6 +25,7 @@ public class ScoreEventHandler : EventDrivenBehaviour
     {
       ResetScoreForFirstScene();
     }
+    scoreUpdateChannel.Invoke(gameData.scoreData.GetScore());
   }
   private void ResetScoreForFirstScene()
   {
@@ -39,5 +42,6 @@ public class ScoreEventHandler : EventDrivenBehaviour
   {
     score = (int)Mathf.Round(score * scoreMultiplier);
     gameData.scoreData.AddScore(score);
+    scoreUpdateChannel.Invoke(gameData.scoreData.GetScore());
   }
 }

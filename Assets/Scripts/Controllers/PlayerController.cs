@@ -6,9 +6,9 @@ public class PlayerController : EventDrivenBehaviour
 {
 
   [SerializeField] private float moveSpeed = 5f;
-  [Listen(Mediator.Input)][SerializeField] private InputMediator input;
-  [Listen(Channel.SoundChannel)][SerializeField] private SoundChannel playSoundChannel;
-  [Listen(Channel.ScoreChannel)][SerializeField] private ScoreChannel scoreChannel;
+  [Subscribe(Mediator.Input)][SerializeField] private InputMediator input;
+  [Subscribe(Channel.SoundChannel)][SerializeField] private SoundChannel playSoundChannel;
+  [Subscribe(Channel.ScoreChannel)][SerializeField] private ScoreChannel scoreChannel;
   [Data][SerializeField] private GameData GameData;
 
   private void OnEnable()

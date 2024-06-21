@@ -6,4 +6,5 @@ public static class Channel
   public const string ButtonReleasedChannel = "ButtonReleasedChannel";
   public const string SoundChannel = "SoundChannel";
   public const string ScoreChannel = "ScoreChannel";
+  public const string ScoreUpdateChannel = "ScoreUpdateChannel";
 }
