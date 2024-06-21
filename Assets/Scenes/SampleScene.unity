@@ -342,37 +342,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1215017985 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3784846314948491104, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-  m_PrefabInstance: {fileID: 1531593005}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1215017987 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6747456608367794854, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-  m_PrefabInstance: {fileID: 1531593005}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215017985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1215017989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1215017985}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35a8ad15c6fd760489e7d5744c81ef68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 1215017987}
-  gameData: {fileID: 11400000, guid: e19aeb9ef0285bc49bd80338125f31e5, type: 2}
-  scoreUpdateChannel: {fileID: 11400000, guid: 517739969eae268489d2759e3cf01c69, type: 2}
 --- !u!1 &1474016322
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,6 +451,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2972612914385390356, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: manaBarColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972612914385390356, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: manaBarColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972612914385390356, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: manaBarColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972612914385390356, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: healthBarColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972612914385390356, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: healthBarColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2972612914385390356, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: healthBarColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3638278300409557793, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
     - target: {fileID: 3907569533453223786, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -498,6 +495,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 5471332799320752170, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: barUpdateChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 59f912822c93bae46a6837eb89db8833, type: 2}
+    - target: {fileID: 5471332799320752170, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: lastBarUpdateChannel
+      value: 
+      objectReference: {fileID: 11400000, guid: 59f912822c93bae46a6837eb89db8833, type: 2}
     - target: {fileID: 5680794825354091309, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: cam
       value: 
@@ -553,10 +558,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3784846314948491104, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1215017989}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
 --- !u!1 &1594120973
 GameObject:

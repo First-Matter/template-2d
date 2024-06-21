@@ -5,7 +5,7 @@ public class BarData : ScriptableObject
 {
   public float value;
   public float maxValue;
-  [SerializeField] private EventChannel<BarData> updateChannel;
+  public BarUpdateEventChannel updateChannel;
 
   public void Reduce(float amount)
   {

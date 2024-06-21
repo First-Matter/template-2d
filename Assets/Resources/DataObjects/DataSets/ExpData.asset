@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8fd1c4d29ff89194fb66aacd230340fd, type: 3}
-  m_Name: ExpUpdateChannel
+  m_Script: {fileID: 11500000, guid: 067ea8d57f6229447b122d8881be635f, type: 3}
+  m_Name: ExpData
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 1, b: 0, a: 1}
+  value: 100
+  maxValue: 100
+  updateChannel: {fileID: 11400000, guid: 3166252f49ba34d47a7a260c321274a0, type: 2}

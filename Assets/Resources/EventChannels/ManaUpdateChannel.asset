@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c79ba6240d7073344890f16c7a09bfb3, type: 3}
   m_Name: ManaUpdateChannel
   m_EditorClassIdentifier: 
+  color: {r: 0, g: 0, b: 1, a: 1}
