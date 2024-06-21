@@ -5,12 +5,12 @@ using System.Collections.Generic;
 public class AudioEventHandler : EventDrivenBehaviour
 {
   [Subscribe][SerializeField] private SoundChannel playSoundChannel;
+  [Data][SerializeField] private GameData gameData;
   private AudioSourcePool audioSourcePool = new AudioSourcePool();
   [Range(0f, 1f)] public float masterVolume = 1f;
   [Range(0f, 1f)] public float musicVolume = 0.7f;
   [Range(0f, 1f)] public float sfxVolume = 0.7f;
   public Sound[] sounds;
-  [Data][SerializeField] private GameData gameData;
 
   [SerializeField] private VolumeControl _volumeControl;
 
