@@ -3,7 +3,10 @@ using UnityEngine;
 public class ManageUI : EventDrivenBehaviour
 {
   [Data] private GameData _gameData;
+  [Header("Score Settings")]
+  [SerializeField] private string scoreTextFormat = "Score: {0}\nHigh Score: {1}";
   [SerializeField] private ScoreResetBehaviour scoreResetBehaviour = ScoreResetBehaviour.ResetForFirstScene;
+  [Header("Bar Settings")]
   [SerializeField] private Color healthBarColor = Color.red;
   [SerializeField] private Color manaBarColor = Color.blue;
   [SerializeField] private Color expBarColor = Color.green;
@@ -26,6 +29,7 @@ public class ManageUI : EventDrivenBehaviour
   private void ManageScore()
   {
     _gameData.scoreData.sceneResetBehaviour = scoreResetBehaviour;
+    _gameData.scoreData.ScoreTextFormat = scoreTextFormat;
     _gameData.scoreData.ResetScore();
   }
   private void ManageBarColors()

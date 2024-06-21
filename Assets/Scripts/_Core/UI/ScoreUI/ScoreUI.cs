@@ -19,8 +19,8 @@ public class ScoreUI : EventDrivenBehaviour
     scoreUpdateChannel.UnRegisterEvent(UpdateScoreText);
   }
 
-  private void UpdateScoreText(ScoreObject scores)
+  public void UpdateScoreText(ScoreObject scores)
   {
-    scoreText.text = "Score: " + scores.score + "\nHigh Score: " + scores.highScore;
+    scoreText.text = string.Format(gameData.scoreData.ScoreTextFormat, scores.score, scores.highScore);
   }
 }

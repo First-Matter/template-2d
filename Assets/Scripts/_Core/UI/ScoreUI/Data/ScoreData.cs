@@ -10,6 +10,17 @@ public class ScoreData : ScriptableObject
   public int score;
   public int highScore;
   public ScoreUpdateChannel scoreUpdateChannel;
+  private string _scoreTextFormat = "Score: {0}\nHigh Score: {1}";
+
+  public string ScoreTextFormat
+  {
+    get => _scoreTextFormat;
+    set
+    {
+      _scoreTextFormat = value;
+      scoreUpdateChannel.Invoke(GetScore());
+    }
+  }
   public void ResetScore()
   {
     if (sceneResetBehaviour == ScoreResetBehaviour.ResetForAllScenes)
@@ -25,6 +36,7 @@ public class ScoreData : ScriptableObject
         highScore = PlayerPrefs.GetInt("HighScore", 0);
       }
     }
+    scoreUpdateChannel.Invoke(GetScore());
   }
 
   public void AddScore(int points)
