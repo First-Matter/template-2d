@@ -7,4 +7,5 @@ public static class Channel
   public const string SoundChannel = "SoundChannel";
   public const string ScoreChannel = "ScoreChannel";
   public const string ScoreUpdateChannel = "ScoreUpdateChannel";
+  public const string HealthUpdateChannel = "HealthUpdateChannel";
 }

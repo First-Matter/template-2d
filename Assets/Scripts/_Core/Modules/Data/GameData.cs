@@ -6,5 +6,5 @@ public class GameData : ScriptableObject
 {
   public SoundData soundData;
   public ScoreData scoreData;
-  public HealthData healthData;
+  public HealthData playerHealth;
 }

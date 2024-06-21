@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundData: {fileID: 11400000, guid: 00b834d338a6cbb4cb785c12c2c339e1, type: 2}
   scoreData: {fileID: 11400000, guid: 28d8314011d3e04439cab5e801921ad5, type: 2}
-  healthData: {fileID: 11400000, guid: c31de5a349ada6645967c64b35267bf2, type: 2}
+  playerHealth: {fileID: 11400000, guid: c31de5a349ada6645967c64b35267bf2, type: 2}
