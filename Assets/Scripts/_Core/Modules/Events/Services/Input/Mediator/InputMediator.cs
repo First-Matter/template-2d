@@ -6,9 +6,9 @@ using System.Collections.Generic;
 public class InputMediator : ScriptableObject
 {
   public AxisChannel inputAxisChannel;
-  public ButtonChannel buttonPressedChannel;
-  public ButtonChannel buttonHeldChannel;
-  public ButtonChannel buttonReleasedChannel;
+  public ButtonPressedChannel buttonPressedChannel;
+  public ButtonHeldChannel buttonHeldChannel;
+  public ButtonReleasedChannel buttonReleasedChannel;
 
   private Dictionary<Button, Action> buttonPressedActions = new Dictionary<Button, Action>();
   private Dictionary<Button, Action> buttonHeldActions = new Dictionary<Button, Action>();

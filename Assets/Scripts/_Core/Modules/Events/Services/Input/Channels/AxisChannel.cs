@@ -1,5 +1,5 @@
 using UnityEngine;
-[CreateAssetMenu(fileName = "AxisChannel", menuName = "Events/Input/AxisChannel")]
-public class AxisChannel : EventChannel<Vector2>
+[CreateAssetMenu(menuName = "Events/Input/AxisChannel")]
+public class AxisChannel : Vector2EventChannel
 {
 }

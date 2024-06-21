@@ -9,8 +9,8 @@ public class UIManager : EventDrivenBehaviour
   [SerializeField] private TextMeshProUGUI healthText;
   [SerializeField] private Slider healthSlider;
   [Data][SerializeField] private GameData gameData;
-  [Subscribe(Channel.ScoreUpdateChannel)][SerializeField] private ScoreUpdateChannel scoreUpdateChannel;
-  [Subscribe(Channel.HealthUpdateChannel)][SerializeField] private HealthUpdateChannel healthChannel;
+  [Subscribe][SerializeField] private ScoreUpdateChannel scoreUpdateChannel;
+  [Subscribe][SerializeField] private HealthUpdateChannel healthChannel;
 
   public enum ScoreResetBehaviour
   {

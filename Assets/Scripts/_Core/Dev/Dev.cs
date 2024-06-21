@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Dev : EventDrivenBehaviour
 {
-  [Subscribe(Channel.AxisChannel)][SerializeField] private EventChannel<Vector2> inputAxisChannel;
-  [Subscribe(Channel.ButtonPressedChannel)][SerializeField] private EventChannel<Button> buttonPressedChannel;
-  [Subscribe(Channel.ButtonHeldChannel)][SerializeField] private EventChannel<Button> buttonHeldChannel;
-  [Subscribe(Channel.ButtonReleasedChannel)][SerializeField] private EventChannel<Button> buttonReleasedChannel;
+  [Subscribe][SerializeField] private AxisChannel inputAxisChannel;
+  [Subscribe][SerializeField] private ButtonPressedChannel buttonPressedChannel;
+  [Subscribe][SerializeField] private ButtonHeldChannel buttonHeldChannel;
+  [Subscribe][SerializeField] private ButtonReleasedChannel buttonReleasedChannel;
   public bool enableLogging = false;
   public float timeBeforeButtonHeldLog = 0.2f;
   private static Dev Instance;

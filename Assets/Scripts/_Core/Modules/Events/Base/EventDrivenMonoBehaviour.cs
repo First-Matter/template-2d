@@ -41,7 +41,7 @@ public class EventDrivenBehaviour : MonoBehaviour
         var currentFieldValue = field.GetValue(this);
         if (currentFieldValue == null)
         {
-          var channel = Resources.Load($"EventChannels/{attribute.ChannelName}", field.FieldType);
+          var channel = Resources.Load($"EventChannels/{field.FieldType.Name}", field.FieldType);
           if (channel != null)
           {
             field.SetValue(this, channel);
@@ -49,7 +49,7 @@ public class EventDrivenBehaviour : MonoBehaviour
 #if UNITY_EDITOR
           else
           {
-            Debug.LogWarning($"Could not find a channel of type {field.FieldType} with name {attribute.ChannelName} in Resources. Creating a new one.");
+            Debug.LogWarning($"Could not find a channel of type {field.FieldType} with name {field.FieldType.Name} in Resources. Creating a new one.");
 
             var newChannel = ScriptableObject.CreateInstance(field.FieldType);
             if (newChannel == null)
@@ -61,7 +61,7 @@ public class EventDrivenBehaviour : MonoBehaviour
             {
               Directory.CreateDirectory("Assets/Resources/EventChannels");
             }
-            AssetDatabase.CreateAsset(newChannel, $"Assets/Resources/EventChannels/{attribute.ChannelName}.asset");
+            AssetDatabase.CreateAsset(newChannel, $"Assets/Resources/EventChannels/{field.FieldType.Name}.asset");
             AssetDatabase.SaveAssets();
             field.SetValue(this, newChannel);
           }

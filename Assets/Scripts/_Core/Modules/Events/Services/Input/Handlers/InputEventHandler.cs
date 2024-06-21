@@ -1,12 +1,13 @@
 using System.Diagnostics.Tracing;
 using UnityEngine;
+using UnityEngine.Animations;
 
 public class InputEventHandler : EventDrivenBehaviour
 {
-  [Subscribe(Channel.ButtonPressedChannel)][SerializeField] private EventChannel<Button> buttonPressedChannel;
-  [Subscribe(Channel.ButtonHeldChannel)][SerializeField] private EventChannel<Button> buttonHeldChannel;
-  [Subscribe(Channel.ButtonReleasedChannel)][SerializeField] private EventChannel<Button> buttonReleasedChannel;
-  [Subscribe(Channel.AxisChannel)][SerializeField] private EventChannel<Vector2> inputAxisChannel;
+  [Subscribe][SerializeField] private ButtonPressedChannel buttonPressedChannel;
+  [Subscribe][SerializeField] private ButtonHeldChannel buttonHeldChannel;
+  [Subscribe][SerializeField] private ButtonReleasedChannel buttonReleasedChannel;
+  [Subscribe][SerializeField] private AxisChannel inputAxisChannel;
   [SerializeField] private InputBinding[] inputBindings;
 
   private void Update()
