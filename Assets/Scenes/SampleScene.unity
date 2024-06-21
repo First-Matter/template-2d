@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  input: {fileID: 11400000, guid: 22169c666c04b114083089c75d1a271b, type: 2}
+  input: {fileID: 11400000, guid: b102508d06e65a546873213b6fa0c6a7, type: 2}
   playSoundChannel: {fileID: 11400000, guid: abb206bfd345a134dacec79149ebf645, type: 2}
   data: {fileID: 11400000, guid: e19aeb9ef0285bc49bd80338125f31e5, type: 2}
 --- !u!212 &1474016324
@@ -451,6 +451,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3907569533453223786, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3907569533453223786, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994530502408865599, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3994530502408865599, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4387250815877649851, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: cam
       value: 
@@ -467,6 +483,14 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1474016325}
+    - target: {fileID: 6851837070023945504, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6851837070023945504, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7376781065416430788, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: m_Name
       value: GameContext

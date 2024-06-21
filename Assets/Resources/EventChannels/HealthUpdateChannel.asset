@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0d6a68a585c4b148bf43d2a09f0b550, type: 3}
   m_Name: HealthUpdateChannel
   m_EditorClassIdentifier: 
+  BarColor: {r: 1, g: 0, b: 0, a: 1}
