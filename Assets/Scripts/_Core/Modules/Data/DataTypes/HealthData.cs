@@ -26,5 +26,6 @@ public class HealthData : ScriptableObject
   {
     this.health = health;
     this.maxHealth = maxHealth;
+    healthUpdateChannel.Invoke(this);
   }
 }

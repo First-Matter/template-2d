@@ -1,13 +1,17 @@
 using UnityEngine;
 using TMPro;
 using UnityEditor.Build.Player;
+using UnityEngine.UI;
 
 public class UIManager : EventDrivenBehaviour
 {
   [SerializeField] private TextMeshProUGUI scoreText;
+  [SerializeField] private TextMeshProUGUI healthText;
+  [SerializeField] private Slider healthSlider;
   [Data][SerializeField] private GameData gameData;
   [Subscribe(Channel.ScoreUpdateChannel)][SerializeField] private ScoreUpdateChannel scoreUpdateChannel;
   [Subscribe(Channel.HealthUpdateChannel)][SerializeField] private HealthUpdateChannel healthChannel;
+
   public enum ScoreResetBehaviour
   {
     ResetForFirstScene,
@@ -16,8 +20,13 @@ public class UIManager : EventDrivenBehaviour
   public ScoreResetBehaviour sceneResetBehaviour = ScoreResetBehaviour.ResetForFirstScene;
   private void OnEnable()
   {
+    if (healthSlider != null)
+    {
+      healthSlider.maxValue = gameData.playerHealth.maxHealth;
+      healthSlider.value = gameData.playerHealth.health;
+    }
     scoreUpdateChannel.RegisterEvent(UpdateScoreText);
-    healthChannel.RegisterEvent(UpdateHealthText);
+    healthChannel.RegisterEvent(UpdateHealthUI);
     if (sceneResetBehaviour == ScoreResetBehaviour.ResetForFirstScene)
     {
       gameData.scoreData.ResetScore();
@@ -26,15 +35,22 @@ public class UIManager : EventDrivenBehaviour
   private void OnDisable()
   {
     scoreUpdateChannel.UnRegisterEvent(UpdateScoreText);
-    healthChannel.UnRegisterEvent(UpdateHealthText);
+    healthChannel.UnRegisterEvent(UpdateHealthUI);
   }
 
   private void UpdateScoreText(ScoreObject scores)
   {
     scoreText.text = "Score: " + scores.score + "\nHigh Score: " + scores.highScore;
   }
-  private void UpdateHealthText(HealthData health)
+  private void UpdateHealthUI(HealthData health)
   {
-    Debug.Log("Health: " + health.health + " / " + health.maxHealth);
+    if (healthText != null)
+    {
+      healthText.text = health.health + " / " + health.maxHealth;
+    }
+    if (healthSlider != null)
+    {
+      healthSlider.value = health.health;
+    }
   }
 }
