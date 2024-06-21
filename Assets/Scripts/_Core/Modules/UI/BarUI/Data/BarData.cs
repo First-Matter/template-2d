@@ -7,25 +7,40 @@ public class BarData : ScriptableObject
   public float maxValue;
   public BarUpdateEventChannel updateChannel;
 
-  public void Reduce(float amount)
+  public virtual void Reduce(float amount)
   {
     value = Mathf.Max(0, value - amount);
     updateChannel.Invoke(this);
     if (value == 0)
     {
-      Dev.Log("Bar depleted");
+      OnDeplete();
     }
   }
 
-  public void Increase(float amount)
+  public virtual void Increase(float amount)
   {
     value = Mathf.Min(maxValue, value + amount);
     updateChannel.Invoke(this);
+    if (value == maxValue)
+    {
+      OnFull();
+    }
   }
+
   public void Initialize(float value, float maxValue)
   {
     this.value = value;
     this.maxValue = maxValue;
     updateChannel.Invoke(this);
+  }
+
+  protected virtual void OnDeplete()
+  {
+    Dev.Log("Bar depleted");
+  }
+
+  protected virtual void OnFull()
+  {
+    Dev.Log("Bar full");
   }
 }

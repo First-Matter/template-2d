@@ -451,6 +451,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2205462303966989026, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: inputBindings.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205462303966989026, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: inputBindings.Array.data[2].button
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205462303966989026, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: inputBindings.Array.data[2].keys.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2205462303966989026, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      propertyPath: inputBindings.Array.data[2].keys.Array.data[0]
+      value: 304
+      objectReference: {fileID: 0}
     - target: {fileID: 3907569533453223786, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

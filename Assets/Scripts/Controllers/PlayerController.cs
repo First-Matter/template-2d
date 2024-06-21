@@ -14,14 +14,18 @@ public class PlayerController : EventDrivenBehaviour
   {
     input.RegisterButtonPressedAction(Button.Jump, HandleJumpPressed);
     input.RegisterButtonPressedAction(Button.Fire, HandleFirePressed);
+    input.RegisterButtonPressedAction(Button.Dash, HandleDashPressed);
     input.RegisterMoveAction(HandleMove);
     data.playerHealth.Initialize(100, 100);
+    data.playerMana.Initialize(100, 100);
+    data.playerExp.Initialize(0, 100);
   }
 
   private void OnDisable()
   {
     input.UnRegisterButtonPressedAction(Button.Jump, HandleJumpPressed);
     input.UnRegisterButtonPressedAction(Button.Fire, HandleFirePressed);
+    input.UnRegisterButtonPressedAction(Button.Dash, HandleDashPressed);
     input.UnRegisterMoveAction(HandleMove);
   }
 
@@ -39,6 +43,11 @@ public class PlayerController : EventDrivenBehaviour
   {
     PlaySound(RegisteredSound.Zap);
     data.scoreData.AddScore(10);
+    data.playerMana.Reduce(5);
+  }
+  private void HandleDashPressed()
+  {
+    data.playerExp.Increase(10);
   }
   private void PlaySound(RegisteredSound soundName)
   {
