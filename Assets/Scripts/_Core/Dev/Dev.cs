@@ -145,7 +145,7 @@ public class Dev : EventDrivenBehaviour
 
   public static void Log(string message)
   {
-    if (Instance.enableLogging)
+    if (Instance != null && Instance.enableLogging)
       Debug.Log(message);
   }
 
