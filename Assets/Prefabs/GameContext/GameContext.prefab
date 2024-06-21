@@ -64,7 +64,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4869545820531788848}
-  - component: {fileID: 3588196574455995516}
   - component: {fileID: 4411412319228849278}
   m_Layer: 0
   m_Name: UI
@@ -89,23 +88,6 @@ Transform:
   - {fileID: 8559367224192921759}
   m_Father: {fileID: 8589780492588210166}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3588196574455995516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293199886899540208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e41c6a22a287f4b4d8203ffdcc168f22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scoreChannel: {fileID: 11400000, guid: 656370b23d9e0bc48800d87ee087c8c5, type: 2}
-  scoreUpdateChannel: {fileID: 11400000, guid: 517739969eae268489d2759e3cf01c69, type: 2}
-  gameData: {fileID: 11400000, guid: e19aeb9ef0285bc49bd80338125f31e5, type: 2}
-  sceneLoadScoreBehavior: 0
-  scoreMultiplier: 1
 --- !u!114 &4411412319228849278
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,6 +103,8 @@ MonoBehaviour:
   scoreText: {fileID: 6747456608367794854}
   gameData: {fileID: 11400000, guid: e19aeb9ef0285bc49bd80338125f31e5, type: 2}
   scoreUpdateChannel: {fileID: 11400000, guid: 517739969eae268489d2759e3cf01c69, type: 2}
+  healthChannel: {fileID: 11400000, guid: 59f912822c93bae46a6837eb89db8833, type: 2}
+  sceneResetBehaviour: 0
 --- !u!1 &2611685998424184684
 GameObject:
   m_ObjectHideFlags: 0

@@ -375,8 +375,7 @@ MonoBehaviour:
   moveSpeed: 5
   input: {fileID: 11400000, guid: 22169c666c04b114083089c75d1a271b, type: 2}
   playSoundChannel: {fileID: 11400000, guid: abb206bfd345a134dacec79149ebf645, type: 2}
-  scoreChannel: {fileID: 11400000, guid: 656370b23d9e0bc48800d87ee087c8c5, type: 2}
-  GameData: {fileID: 11400000, guid: e19aeb9ef0285bc49bd80338125f31e5, type: 2}
+  data: {fileID: 11400000, guid: e19aeb9ef0285bc49bd80338125f31e5, type: 2}
 --- !u!212 &1474016324
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -512,7 +511,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3588196574455995516, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

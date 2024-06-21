@@ -8,10 +8,20 @@ public class UIManager : EventDrivenBehaviour
   [Data][SerializeField] private GameData gameData;
   [Subscribe(Channel.ScoreUpdateChannel)][SerializeField] private ScoreUpdateChannel scoreUpdateChannel;
   [Subscribe(Channel.HealthUpdateChannel)][SerializeField] private HealthUpdateChannel healthChannel;
+  public enum ScoreResetBehaviour
+  {
+    ResetForFirstScene,
+    ResetForAllScenes
+  }
+  public ScoreResetBehaviour sceneResetBehaviour = ScoreResetBehaviour.ResetForFirstScene;
   private void OnEnable()
   {
     scoreUpdateChannel.RegisterEvent(UpdateScoreText);
     healthChannel.RegisterEvent(UpdateHealthText);
+    if (sceneResetBehaviour == ScoreResetBehaviour.ResetForFirstScene)
+    {
+      gameData.scoreData.ResetScore();
+    }
   }
   private void OnDisable()
   {
