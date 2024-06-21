@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class EventChannel<T> : ScriptableObject, IListen<T>, IBroadcast<T>
+public class EventChannel<T> : ScriptableObject
 {
   public event Action<T> OnEvent;
 
