@@ -20,7 +20,11 @@ public class BarUI : MonoBehaviour
   public void UpdateBar(BarData data)
   {
     if (barSlider != null)
+    {
+      if (barSlider.maxValue != data.maxValue)
+        barSlider.maxValue = data.maxValue;
       barSlider.value = data.value;
+    }
     if (barText != null)
       barText.text = $"{data.value} / {barSlider.maxValue}";
   }

@@ -4,19 +4,27 @@ using UnityEngine.SceneManagement;
 [CreateAssetMenu(fileName = "ScoreData", menuName = "Data/Sets/ScoreData")]
 public class ScoreData : ScriptableObject
 {
+
+  [System.NonSerialized]
+  public ScoreResetBehaviour sceneResetBehaviour = ScoreResetBehaviour.ResetForFirstScene;
   public int score;
   public int highScore;
-  [SerializeField] private ScoreUpdateChannel scoreUpdateChannel;
-  public enum SceneResetBehaviour
-  {
-    Reset,
-    Keep
-  }
+  public ScoreUpdateChannel scoreUpdateChannel;
   public void ResetScore()
   {
-    score = 0;
-    highScore = PlayerPrefs.GetInt("HighScore", 0);
-    scoreUpdateChannel.Invoke(GetScore());
+    if (sceneResetBehaviour == ScoreResetBehaviour.ResetForAllScenes)
+    {
+      score = 0;
+      highScore = PlayerPrefs.GetInt("HighScore", 0);
+    }
+    else if (sceneResetBehaviour == ScoreResetBehaviour.ResetForFirstScene)
+    {
+      if (SceneManager.GetActiveScene().buildIndex == 0)
+      {
+        score = 0;
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
+      }
+    }
   }
 
   public void AddScore(int points)
@@ -52,4 +60,9 @@ public class ScoreObject
     this.score = score;
     this.highScore = highScore;
   }
+}
+public enum ScoreResetBehaviour
+{
+  ResetForFirstScene,
+  ResetForAllScenes
 }
