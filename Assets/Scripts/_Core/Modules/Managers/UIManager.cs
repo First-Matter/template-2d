@@ -26,7 +26,6 @@ public class UIManager : EventDrivenBehaviour
       healthSlider.value = gameData.playerHealth.value;
     }
     scoreUpdateChannel.RegisterEvent(UpdateScoreText);
-    healthChannel.RegisterEvent(UpdateHealthUI);
     if (sceneResetBehaviour == ScoreResetBehaviour.ResetForFirstScene)
     {
       gameData.scoreData.ResetScore();
@@ -35,22 +34,10 @@ public class UIManager : EventDrivenBehaviour
   private void OnDisable()
   {
     scoreUpdateChannel.UnRegisterEvent(UpdateScoreText);
-    healthChannel.UnRegisterEvent(UpdateHealthUI);
   }
 
   private void UpdateScoreText(ScoreObject scores)
   {
     scoreText.text = "Score: " + scores.score + "\nHigh Score: " + scores.highScore;
-  }
-  private void UpdateHealthUI(BarData health)
-  {
-    if (healthText != null)
-    {
-      healthText.text = health.value + " / " + health.maxValue;
-    }
-    if (healthSlider != null)
-    {
-      healthSlider.value = health.value;
-    }
   }
 }

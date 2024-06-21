@@ -6,18 +6,22 @@ public class BarUI : MonoBehaviour
 {
   [SerializeField] private Slider barSlider;
   [SerializeField] private TextMeshProUGUI barText;
+  [SerializeField] private BarUpdateEventChannel barUpdateChannel;
 
-  public void Initialize(float maxValue)
+  private void OnEnable()
   {
-    barSlider.maxValue = maxValue;
-    UpdateBar(maxValue);
+    barUpdateChannel.RegisterEvent(UpdateBar);
+  }
+  private void OnDisable()
+  {
+    barUpdateChannel.UnRegisterEvent(UpdateBar);
   }
 
-  public void UpdateBar(float value)
+  public void UpdateBar(BarData data)
   {
     if (barSlider != null)
-      barSlider.value = value;
+      barSlider.value = data.value;
     if (barText != null)
-      barText.text = $"{value} / {barSlider.maxValue}";
+      barText.text = $"{data.value} / {barSlider.maxValue}";
   }
 }
