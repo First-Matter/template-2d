@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2882a5846bcc7104980d71027af804a3, type: 3}
   m_Name: HealthData
   m_EditorClassIdentifier: 
-  health: 0
-  maxHealth: 0
-  healthUpdateChannel: {fileID: 11400000, guid: 59f912822c93bae46a6837eb89db8833, type: 2}
+  value: 0
+  maxValue: 100
+  updateChannel: {fileID: 11400000, guid: 59f912822c93bae46a6837eb89db8833, type: 2}

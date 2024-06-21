@@ -22,8 +22,8 @@ public class UIManager : EventDrivenBehaviour
   {
     if (healthSlider != null)
     {
-      healthSlider.maxValue = gameData.playerHealth.maxHealth;
-      healthSlider.value = gameData.playerHealth.health;
+      healthSlider.maxValue = gameData.playerHealth.maxValue;
+      healthSlider.value = gameData.playerHealth.value;
     }
     scoreUpdateChannel.RegisterEvent(UpdateScoreText);
     healthChannel.RegisterEvent(UpdateHealthUI);
@@ -42,15 +42,15 @@ public class UIManager : EventDrivenBehaviour
   {
     scoreText.text = "Score: " + scores.score + "\nHigh Score: " + scores.highScore;
   }
-  private void UpdateHealthUI(HealthData health)
+  private void UpdateHealthUI(BarData health)
   {
     if (healthText != null)
     {
-      healthText.text = health.health + " / " + health.maxHealth;
+      healthText.text = health.value + " / " + health.maxValue;
     }
     if (healthSlider != null)
     {
-      healthSlider.value = health.health;
+      healthSlider.value = health.value;
     }
   }
 }

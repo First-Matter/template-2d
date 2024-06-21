@@ -33,7 +33,7 @@ public class PlayerController : EventDrivenBehaviour
   private void HandleJumpPressed()
   {
     PlaySound(RegisteredSound.Grenade);
-    data.playerHealth.ReduceHealth(10);
+    data.playerHealth.Reduce(10);
   }
   private void HandleFirePressed()
   {
