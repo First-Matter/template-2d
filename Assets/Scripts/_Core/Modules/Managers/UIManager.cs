@@ -6,11 +6,11 @@ public class UIManager : EventDrivenBehaviour
 {
   [SerializeField] private TextMeshProUGUI scoreText;
   [Data][SerializeField] private GameData gameData;
-  private int lastScore = 0;
+  private int lastScore = -1;
 
   void Awake()
   {
-    UpdateScoreText(new(0, 0));
+
   }
 
   void Update()

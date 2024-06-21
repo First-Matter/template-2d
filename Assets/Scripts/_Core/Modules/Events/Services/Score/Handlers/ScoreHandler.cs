@@ -14,6 +14,7 @@ public class ScoreEventHandler : EventDrivenBehaviour
   [SerializeField] private float scoreMultiplier = 1f;
   private void OnEnable()
   {
+    _scoreChannel.RegisterEvent(UpdateScore);
     if (sceneLoadScoreBehavior == SceneLoadScoreBehavior.Reset)
     {
       gameData.scoreData.ResetScore();
@@ -22,7 +23,6 @@ public class ScoreEventHandler : EventDrivenBehaviour
     {
       ResetScoreForFirstScene();
     }
-    _scoreChannel.RegisterEvent(UpdateScore);
   }
   private void ResetScoreForFirstScene()
   {
