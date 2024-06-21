@@ -12,24 +12,23 @@ public class ScoreEventHandler : EventDrivenBehaviour
   [Tooltip("When the next scene is loaded, should the score be reset or kept?")]
   [SerializeField] private SceneLoadScoreBehavior sceneLoadScoreBehavior = SceneLoadScoreBehavior.Reset;
   [SerializeField] private float scoreMultiplier = 1f;
-
   private void OnEnable()
   {
-    _scoreChannel.RegisterEvent(UpdateScore);
     if (sceneLoadScoreBehavior == SceneLoadScoreBehavior.Reset)
     {
-      gameData.ResetScore();
+      gameData.scoreData.ResetScore();
     }
     else
     {
       ResetScoreForFirstScene();
     }
+    _scoreChannel.RegisterEvent(UpdateScore);
   }
   private void ResetScoreForFirstScene()
   {
     if (SceneManager.GetActiveScene().buildIndex == 0)
     {
-      gameData.ResetScore();
+      gameData.scoreData.ResetScore();
     }
   }
   private void OnDisable()
@@ -39,6 +38,6 @@ public class ScoreEventHandler : EventDrivenBehaviour
   private void UpdateScore(int score)
   {
     score = (int)Mathf.Round(score * scoreMultiplier);
-    gameData.AddScore(score);
+    gameData.scoreData.AddScore(score);
   }
 }

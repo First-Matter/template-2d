@@ -15,10 +15,10 @@ public class UIManager : EventDrivenBehaviour
 
   void Update()
   {
-    if (lastScore != gameData.score)
+    if (lastScore != gameData.scoreData.score)
     {
-      lastScore = gameData.score;
-      UpdateScoreText(gameData.GetScore());
+      lastScore = gameData.scoreData.score;
+      UpdateScoreText(gameData.scoreData.GetScore());
     }
   }
   private void UpdateScoreText(ScoreObject scores)

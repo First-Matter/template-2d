@@ -24,9 +24,9 @@ public class AudioEventHandler : EventDrivenBehaviour
 
   void Awake()
   {
-    if (gameData != null)
+    if (gameData.soundData != null)
     {
-      gameData.sounds = new List<Sound>(sounds);
+      gameData.soundData.sounds = new List<Sound>(sounds);
     }
     audioSourcePool.Initialize(transform);
     PlayAwakeSources();
@@ -132,7 +132,7 @@ public class AudioEventHandler : EventDrivenBehaviour
 
   private void PlaySound(RegisteredSound soundName)
   {
-    Sound sound = gameData.GetSound(soundName);
+    Sound sound = gameData.soundData.GetSound(soundName);
     if (sound == null)
     {
       Debug.LogWarning($"Sound {soundName} not found in repository.");
