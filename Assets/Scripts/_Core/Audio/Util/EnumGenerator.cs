@@ -16,7 +16,7 @@ public class EnumGenerator : Editor
 
     // Start building the enum string
     StringBuilder enumString = new StringBuilder();
-    enumString.AppendLine("public enum SoundNames");
+    enumString.AppendLine("public enum RegisteredSound");
     enumString.AppendLine("{");
     HashSet<string> soundNames = new HashSet<string>();
 
@@ -35,7 +35,7 @@ public class EnumGenerator : Editor
     enumString.AppendLine("}");
 
     // Write the enum string to a file
-    string path = Path.Combine(Application.dataPath, "Scripts", "_Core", "Modules", "Data", "Enums", "SoundNames.cs");
+    string path = Path.Combine(Application.dataPath, "Scripts", "_Core", "Audio", "Enums", "RegisteredSound.cs");
     File.WriteAllText(path, enumString.ToString());
     string relativePath = "Assets" + path.Substring(Application.dataPath.Length);
 
