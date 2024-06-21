@@ -15,7 +15,6 @@ public class BarUI : MonoBehaviour
   {
     if (barUpdateChannel != null)
     {
-      Debug.Log("Registering");
       barUpdateChannel.RegisterEvent(UpdateBar);
     }
   }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-public class LevelUpEventListener : EventDrivenBehaviour
+public class LevelUI : EventDrivenBehaviour
 {
   [SerializeField] private LevelUpEventChannel levelUpEventChannel;
   [Data][SerializeField] private GameData gameData;
@@ -10,7 +10,6 @@ public class LevelUpEventListener : EventDrivenBehaviour
   private void OnEnable()
   {
     levelUpEventChannel.RegisterEvent(OnLevelUp);
-    gameData.levelUpData.ResetLevel();
   }
 
   private void OnDisable()

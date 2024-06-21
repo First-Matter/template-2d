@@ -15,6 +15,8 @@ public class GameInitialization : EventDrivenBehaviour
   {
     InitializeScoreSettings();
     InitializeLevelSettings();
+    _gameData.scoreData.ResetScore();
+    _gameData.levelUpData.ResetLevel();
   }
 
   private void InitializeScoreSettings()

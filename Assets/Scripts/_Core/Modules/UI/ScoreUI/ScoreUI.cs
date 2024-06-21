@@ -12,7 +12,6 @@ public class ScoreUI : EventDrivenBehaviour
   private void OnEnable()
   {
     scoreUpdateChannel.RegisterEvent(UpdateScoreText);
-    gameData.scoreData.ResetScore();
   }
   private void OnDisable()
   {
