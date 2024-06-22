@@ -38,6 +38,7 @@ public class PlayerController : EventDrivenBehaviour
   {
     PlaySound(RegisteredSound.Grenade);
     data.playerHealth.Reduce(10);
+    data.pauseController.TogglePause();
   }
   private void HandleFirePressed()
   {
