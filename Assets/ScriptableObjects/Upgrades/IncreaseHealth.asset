@@ -17,8 +17,8 @@ MonoBehaviour:
   Description: Increase Health
   DescriptionPlural: Increas Healths
   minMinAmount: 1
-  minMaxAmount: 3
-  maxMinAmount: 3
+  minMaxAmount: 10
+  maxMinAmount: 1
   maxMaxAmount: 10
   Upgrade: 0
   Chance: 100

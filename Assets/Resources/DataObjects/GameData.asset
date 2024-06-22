@@ -17,4 +17,5 @@ MonoBehaviour:
   playerHealth: {fileID: 11400000, guid: c31de5a349ada6645967c64b35267bf2, type: 2}
   playerMana: {fileID: 11400000, guid: 0ff597a5cac35874184ecac064bdeb93, type: 2}
   playerExp: {fileID: 11400000, guid: 8b67e04677ecf1d42970a120b619cb1b, type: 2}
-  levelUpData: {fileID: 11400000, guid: a4c327405cbe0704db648acc73381f50, type: 2}
+  levelUpData: {fileID: 11400000, guid: cec585f3254715549ad6257dd2c0f0e7, type: 2}
+  pauseController: {fileID: 11400000, guid: f0ff49bf55e8ca044bdac8d057104f44, type: 2}

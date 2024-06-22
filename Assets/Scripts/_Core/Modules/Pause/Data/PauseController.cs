@@ -4,7 +4,7 @@ using UnityEngine;
 public class PauseController : BaseData
 {
   [Subscribe][SerializeField] private PauseEventChannel pauseEventChannel;
-  private bool isPaused = false;
+  public static bool isPaused = false;
   public void TogglePause()
   {
     isPaused = !isPaused;

@@ -20,5 +20,5 @@ MonoBehaviour:
   minMaxAmount: 3
   maxMinAmount: 3
   maxMaxAmount: 10
-  Upgrade: 0
+  Upgrade: 1
   Chance: 100

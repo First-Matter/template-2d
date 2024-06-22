@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ManageUI : EventDrivenBehaviour
 {
-  [Data] private GameData _gameData;
+  [Data][SerializeField] private GameData _gameData;
   [Header("Text Formatting")]
   [SerializeField] private string scoreTextFormat = "Score: {0}\nHigh Score: {1}";
   [SerializeField] private string levelTextFormat = "Level: {0}";
@@ -32,7 +32,8 @@ public class ManageUI : EventDrivenBehaviour
 
   private void ManageScoreUI()
   {
-    _gameData.scoreData.ScoreTextFormat = scoreTextFormat;
+    if (_gameData != null && _gameData.scoreData != null)
+      _gameData.scoreData.ScoreTextFormat = scoreTextFormat;
   }
 
   private void ManageBarColors()

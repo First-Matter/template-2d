@@ -40,11 +40,15 @@ public class UpgradeEventHandler : EventDrivenBehaviour
     {
       return;
     }
-    upgradeOptionParent.gameObject.SetActive(true);
-    gameData.pauseController.SetPause(true);
+    PauseForUpgrade(true);
     GenerateUpgrades();
   }
-
+  private void PauseForUpgrade(bool isPaused)
+  {
+    gameData.isSelectingUpgrade = isPaused;
+    upgradeOptionParent.gameObject.SetActive(isPaused);
+    gameData.pauseController.SetPause(isPaused);
+  }
   private int CalculateTotalChance()
   {
     int total = 0;
@@ -76,19 +80,37 @@ public class UpgradeEventHandler : EventDrivenBehaviour
 
   public void ApplyUpgrade(UpgradeEvent upgradeEvent)
   {
+    bool pauseForUpgrade = false;
     switch (upgradeEvent.upgrade.Upgrade)
     {
+      case UpgradeEnum.ReRoll:
+        ReRoll(ref pauseForUpgrade);
+        break;
       case UpgradeEnum.IncreaseHealth:
-        gameData.playerHealth.maxValue += upgradeEvent.amount;
-        gameData.playerHealth.Initialize(gameData.playerHealth.value, gameData.playerHealth.maxValue);
+        IncreaseHealth(upgradeEvent.amount);
         break;
       case UpgradeEnum.IncreaseMana:
-        gameData.playerMana.maxValue += upgradeEvent.amount;
-        gameData.playerMana.Initialize(gameData.playerMana.value, gameData.playerMana.maxValue);
+        IncreaseMana(upgradeEvent.amount);
         break;
     }
+    PauseForUpgrade(pauseForUpgrade);
   }
-
+  private void ReRoll(ref bool pauseForUpgrade)
+  {
+    Reset();
+    OnLevelUp(gameData.levelUpData.currentLevel);
+    pauseForUpgrade = true;
+  }
+  private void IncreaseHealth(int amount)
+  {
+    gameData.playerHealth.maxValue += amount;
+    gameData.playerHealth.Initialize(gameData.playerHealth.value, gameData.playerHealth.maxValue);
+  }
+  private void IncreaseMana(int amount)
+  {
+    gameData.playerMana.maxValue += amount;
+    gameData.playerMana.Initialize(gameData.playerMana.value, gameData.playerMana.maxValue);
+  }
   private void GenerateUpgrades()
   {
     Debug.Log("Generating upgrades...");

@@ -58,6 +58,10 @@ MonoBehaviour:
   - button: 2
     AnyKey: 0
     keys: 30010000
+  - button: 3
+    AnyKey: 0
+    keys: 1b000000
+  gameData: {fileID: 11400000, guid: e19aeb9ef0285bc49bd80338125f31e5, type: 2}
 --- !u!1 &1293199886899540208
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,6 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f5bba7378994e640b679562ed1d2153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameData: {fileID: 11400000, guid: e19aeb9ef0285bc49bd80338125f31e5, type: 2}
   scoreTextFormat: 'Score: {0}
 
     High Score: {1}'

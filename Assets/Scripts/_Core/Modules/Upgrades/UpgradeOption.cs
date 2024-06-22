@@ -2,13 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using static UpgradeScriptableObject;
 
 public class UpgradeOption : EventDrivenBehaviour
 {
   public UpgradeScriptableObject Upgrade;
 
-  [SerializeField] private Text Title;
-  [SerializeField] private Text Description;
+  [SerializeField] private TextMeshProUGUI Title;
+  [SerializeField] private TextMeshProUGUI Description;
   [SerializeField] private Image Icon;
   [SerializeField] private int minAmount;
   private int minMinAmount = 1;
@@ -69,8 +71,6 @@ public class UpgradeOption : EventDrivenBehaviour
   public void UpgradeFunction()
   {
     upgradeEventChannel.Invoke(new UpgradeEvent(Upgrade, amount));
-    data.pauseController.SetPause(false);
-    transform.parent.gameObject.SetActive(false);
   }
   void OnDisable()
   {

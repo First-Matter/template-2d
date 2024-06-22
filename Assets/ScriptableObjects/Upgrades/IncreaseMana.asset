@@ -17,8 +17,8 @@ MonoBehaviour:
   Description: Increase Mana
   DescriptionPlural: Increase Manas
   minMinAmount: 1
-  minMaxAmount: 3
-  maxMinAmount: 3
+  minMaxAmount: 10
+  maxMinAmount: 1
   maxMaxAmount: 10
-  Upgrade: 0
+  Upgrade: 2
   Chance: 100
