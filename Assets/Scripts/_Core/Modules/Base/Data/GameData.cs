@@ -2,12 +2,13 @@ using UnityEngine;
 using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "GameData", menuName = "Data/GameData")]
-public class GameData : ScriptableObject
+public class GameData : BaseData
 {
-  public SoundData soundData;
-  public ScoreData scoreData;
-  public HealthData playerHealth;
-  public ManaData playerMana;
-  public ExpData playerExp;
-  public LevelData levelUpData;
+  [Data] public SoundData soundData;
+  [Data] public ScoreData scoreData;
+  [Data] public HealthData playerHealth;
+  [Data] public ManaData playerMana;
+  [Data] public ExpData playerExp;
+  [Data] public LevelData levelUpData;
+  [Data] public PauseController pauseController;
 }

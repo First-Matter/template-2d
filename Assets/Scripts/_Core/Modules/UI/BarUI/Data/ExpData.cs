@@ -4,7 +4,7 @@ using UnityEngine;
 public class ExpData : BarData
 {
   public float maxExpMultiplier = 1.2f;
-  public GameData gameData;
+  [Data] public GameData gameData;
   public void Initialize(int currentValue, int maxValue)
   {
     base.Initialize(currentValue, maxValue);

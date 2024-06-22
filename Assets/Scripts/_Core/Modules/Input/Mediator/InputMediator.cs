@@ -3,19 +3,20 @@ using System;
 using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "InputMediator", menuName = "Events/Input/InputMediator")]
-public class InputMediator : ScriptableObject
+public class InputMediator : BaseData
 {
-  public AxisChannel inputAxisChannel;
-  public ButtonPressedChannel buttonPressedChannel;
-  public ButtonHeldChannel buttonHeldChannel;
-  public ButtonReleasedChannel buttonReleasedChannel;
+  [Subscribe] public AxisChannel inputAxisChannel;
+  [Subscribe] public ButtonPressedChannel buttonPressedChannel;
+  [Subscribe] public ButtonHeldChannel buttonHeldChannel;
+  [Subscribe] public ButtonReleasedChannel buttonReleasedChannel;
 
   private Dictionary<Button, Action> buttonPressedActions = new Dictionary<Button, Action>();
   private Dictionary<Button, Action> buttonHeldActions = new Dictionary<Button, Action>();
   private Dictionary<Button, Action> buttonReleasedActions = new Dictionary<Button, Action>();
 
-  void OnEnable()
+  protected override void OnEnable()
   {
+    base.OnEnable();
     RegisterActionsForChannels();
   }
 

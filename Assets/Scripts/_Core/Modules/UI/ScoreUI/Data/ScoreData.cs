@@ -2,14 +2,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "ScoreData", menuName = "Data/Sets/ScoreData")]
-public class ScoreData : ScriptableObject
+public class ScoreData : BaseData
 {
 
   [System.NonSerialized]
   public ScoreResetBehaviour sceneResetBehaviour = ScoreResetBehaviour.ResetForFirstScene;
   public int score;
   public int highScore;
-  public ScoreUpdateChannel scoreUpdateChannel;
+  [Subscribe] public ScoreUpdateChannel scoreUpdateChannel;
   private string _scoreTextFormat = "Score: {0}\nHigh Score: {1}";
 
   public string ScoreTextFormat

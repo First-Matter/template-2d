@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BarData", menuName = "Data/Sets/BarData")]
-public class BarData : ScriptableObject
+public class BarData : BaseData
 {
   public float value;
   public float maxValue;

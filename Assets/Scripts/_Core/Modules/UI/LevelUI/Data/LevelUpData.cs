@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "LevelData", menuName = "Data/Sets/LevelData")]
-public class LevelData : ScriptableObject
+public class LevelData : BaseData
 {
   public int currentLevel = 1;
   public float maxExpMultiplier = 1.2f;
-  public LevelUpEventChannel levelUpEventChannel;
+  [Subscribe] public LevelUpEventChannel levelUpEventChannel;
   public LevelResetBehaviour sceneResetBehaviour = LevelResetBehaviour.ResetForAllScenes;
   private string _textFormat = "Level: {0}";
 
