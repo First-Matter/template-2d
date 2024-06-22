@@ -1,5 +1,5 @@
 [System.Serializable]
-public enum Button
+public enum InputButton
 {
   Jump, Fire, Dash
 }

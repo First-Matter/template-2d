@@ -12,9 +12,9 @@ public class PlayerController : EventDrivenBehaviour
 
   private void OnEnable()
   {
-    input.RegisterButtonPressedAction(Button.Jump, HandleJumpPressed);
-    input.RegisterButtonPressedAction(Button.Fire, HandleFirePressed);
-    input.RegisterButtonHeldAction(Button.Dash, HandleDashHeld);
+    input.RegisterButtonPressedAction(InputButton.Jump, HandleJumpPressed);
+    input.RegisterButtonPressedAction(InputButton.Fire, HandleFirePressed);
+    input.RegisterButtonHeldAction(InputButton.Dash, HandleDashHeld);
     input.RegisterMoveAction(HandleMove);
     data.playerHealth.Initialize(100, 100);
     data.playerMana.Initialize(100, 100);
@@ -23,9 +23,9 @@ public class PlayerController : EventDrivenBehaviour
 
   private void OnDisable()
   {
-    input.UnRegisterButtonPressedAction(Button.Jump, HandleJumpPressed);
-    input.UnRegisterButtonPressedAction(Button.Fire, HandleFirePressed);
-    input.UnRegisterButtonHeldAction(Button.Dash, HandleDashHeld);
+    input.UnRegisterButtonPressedAction(InputButton.Jump, HandleJumpPressed);
+    input.UnRegisterButtonPressedAction(InputButton.Fire, HandleFirePressed);
+    input.UnRegisterButtonHeldAction(InputButton.Dash, HandleDashHeld);
     input.UnRegisterMoveAction(HandleMove);
   }
 

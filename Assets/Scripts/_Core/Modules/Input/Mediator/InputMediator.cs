@@ -10,9 +10,9 @@ public class InputMediator : BaseData
   [Subscribe] public ButtonHeldChannel buttonHeldChannel;
   [Subscribe] public ButtonReleasedChannel buttonReleasedChannel;
 
-  private Dictionary<Button, Action> buttonPressedActions = new Dictionary<Button, Action>();
-  private Dictionary<Button, Action> buttonHeldActions = new Dictionary<Button, Action>();
-  private Dictionary<Button, Action> buttonReleasedActions = new Dictionary<Button, Action>();
+  private Dictionary<InputButton, Action> buttonPressedActions = new Dictionary<InputButton, Action>();
+  private Dictionary<InputButton, Action> buttonHeldActions = new Dictionary<InputButton, Action>();
+  private Dictionary<InputButton, Action> buttonReleasedActions = new Dictionary<InputButton, Action>();
 
   protected override void OnEnable()
   {
@@ -48,7 +48,7 @@ public class InputMediator : BaseData
     buttonReleasedChannel.UnRegisterEvent(InvokeButtonReleased);
   }
 
-  public void RegisterButtonPressedAction(Button button, Action action)
+  public void RegisterButtonPressedAction(InputButton button, Action action)
   {
     if (!buttonPressedActions.ContainsKey(button))
     {
@@ -60,7 +60,7 @@ public class InputMediator : BaseData
     }
   }
 
-  public void UnRegisterButtonPressedAction(Button button, Action action)
+  public void UnRegisterButtonPressedAction(InputButton button, Action action)
   {
     if (buttonPressedActions.ContainsKey(button))
     {
@@ -72,7 +72,7 @@ public class InputMediator : BaseData
     }
   }
 
-  public void RegisterButtonHeldAction(Button button, Action action)
+  public void RegisterButtonHeldAction(InputButton button, Action action)
   {
     if (!buttonHeldActions.ContainsKey(button))
     {
@@ -84,7 +84,7 @@ public class InputMediator : BaseData
     }
   }
 
-  public void UnRegisterButtonHeldAction(Button button, Action action)
+  public void UnRegisterButtonHeldAction(InputButton button, Action action)
   {
     if (buttonHeldActions.ContainsKey(button))
     {
@@ -96,7 +96,7 @@ public class InputMediator : BaseData
     }
   }
 
-  public void RegisterButtonReleasedAction(Button button, Action action)
+  public void RegisterButtonReleasedAction(InputButton button, Action action)
   {
     if (!buttonReleasedActions.ContainsKey(button))
     {
@@ -108,7 +108,7 @@ public class InputMediator : BaseData
     }
   }
 
-  public void UnRegisterButtonReleasedAction(Button button, Action action)
+  public void UnRegisterButtonReleasedAction(InputButton button, Action action)
   {
     if (buttonReleasedActions.ContainsKey(button))
     {
@@ -120,7 +120,7 @@ public class InputMediator : BaseData
     }
   }
 
-  private void InvokeButtonPressed(Button button)
+  private void InvokeButtonPressed(InputButton button)
   {
     if (buttonPressedActions.ContainsKey(button))
     {
@@ -128,7 +128,7 @@ public class InputMediator : BaseData
     }
   }
 
-  private void InvokeButtonHeld(Button button)
+  private void InvokeButtonHeld(InputButton button)
   {
     if (buttonHeldActions.ContainsKey(button))
     {
@@ -136,7 +136,7 @@ public class InputMediator : BaseData
     }
   }
 
-  private void InvokeButtonReleased(Button button)
+  private void InvokeButtonReleased(InputButton button)
   {
     if (buttonReleasedActions.ContainsKey(button))
     {

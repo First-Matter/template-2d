@@ -3,7 +3,7 @@ using UnityEngine;
 [System.Serializable]
 public class InputBinding
 {
-  public Button button;
+  public InputButton button;
   public bool AnyKey;
   public KeyCode[] keys;
   public bool IsPressed()

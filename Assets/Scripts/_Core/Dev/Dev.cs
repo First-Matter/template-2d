@@ -21,7 +21,7 @@ public class Dev : EventDrivenBehaviour
     public float HoldTimer { get; set; }
   }
 
-  private Dictionary<Button, ActionState> actionStates = new Dictionary<Button, ActionState>();
+  private Dictionary<InputButton, ActionState> actionStates = new Dictionary<InputButton, ActionState>();
   private float horizontalAxis;
   private float lastHorizontalAxis;
   private float verticalAxis;
@@ -56,7 +56,7 @@ public class Dev : EventDrivenBehaviour
     inputAxisChannel.UnRegisterEvent(HandleMove);
   }
 
-  private void HandleButtonPress(Button button)
+  private void HandleButtonPress(InputButton button)
   {
     Log($"{button} button pressed.");
     if (!actionStates.ContainsKey(button))
@@ -66,7 +66,7 @@ public class Dev : EventDrivenBehaviour
     actionStates[button].WasPressed = true;
   }
 
-  private void HandleButtonHold(Button button)
+  private void HandleButtonHold(InputButton button)
   {
     if (actionStates.ContainsKey(button))
     {
@@ -83,7 +83,7 @@ public class Dev : EventDrivenBehaviour
     }
   }
 
-  private void HandleButtonRelease(Button button)
+  private void HandleButtonRelease(InputButton button)
   {
     if (actionStates.ContainsKey(button) && actionStates[button].WasPressed)
     {
