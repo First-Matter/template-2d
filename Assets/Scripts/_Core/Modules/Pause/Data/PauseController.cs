@@ -5,8 +5,11 @@ public class PauseController : BaseData
 {
   [Subscribe][SerializeField] private PauseEventChannel pauseEventChannel;
   public static bool isPaused = false;
+  public float textFlashSpeed = 1f;
+  public string pauseText = "Paused";
   public void TogglePause()
   {
+    Debug.Log("PauseController: TogglePause()");
     isPaused = !isPaused;
     pauseEventChannel.Invoke(isPaused);
   }

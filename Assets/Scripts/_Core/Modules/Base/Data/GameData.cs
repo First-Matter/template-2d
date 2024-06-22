@@ -11,5 +11,10 @@ public class GameData : BaseData
   [Data] public ExpData playerExp;
   [Data] public LevelData levelUpData;
   [Data] public PauseController pauseController;
-  public bool isSelectingUpgrade { get; set; } = false;
+  public bool isSelectingUpgrade { get; set; }
+  protected override void OnEnable()
+  {
+    base.OnEnable();
+    isSelectingUpgrade = false;
+  }
 }

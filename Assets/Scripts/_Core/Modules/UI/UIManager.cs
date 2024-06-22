@@ -4,6 +4,8 @@ public class ManageUI : EventDrivenBehaviour
 {
   [Data][SerializeField] private GameData _gameData;
   [Header("Text Formatting")]
+  [SerializeField] private string pauseText = "Paused";
+  [SerializeField] private float textFlashSpeed = 1f;
   [SerializeField] private string scoreTextFormat = "Score: {0}\nHigh Score: {1}";
   [SerializeField] private string levelTextFormat = "Level: {0}";
   [Header("Bar Settings")]
@@ -29,12 +31,21 @@ public class ManageUI : EventDrivenBehaviour
     ManageScoreUI();
     ManageBarColors();
     ManageLevelUI();
+    ManagePauseUI();
   }
 
   private void ManageScoreUI()
   {
     if (_gameData != null && _gameData.scoreData != null)
       _gameData.scoreData.ScoreTextFormat = scoreTextFormat;
+  }
+  private void ManagePauseUI()
+  {
+    if (_gameData != null && _gameData.pauseController != null)
+    {
+      _gameData.pauseController.pauseText = pauseText;
+      _gameData.pauseController.textFlashSpeed = textFlashSpeed;
+    }
   }
 
   private void ManageBarColors()
