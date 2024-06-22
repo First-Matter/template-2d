@@ -14,6 +14,7 @@ public class ManageUI : EventDrivenBehaviour
   private void Awake()
   {
     InitializeUISettings();
+    EnsureMainCameraOverlayCanvas();
   }
 
   protected override void OnValidate()
@@ -55,5 +56,18 @@ public class ManageUI : EventDrivenBehaviour
     {
       barUI.OnValidate();
     }
+  }
+  private void EnsureMainCameraOverlayCanvas()
+  {
+    if (Camera.main == null)
+    {
+      Debug.LogWarning("No main camera found. Ensure a camera is tagged as MainCamera.");
+      return;
+    }
+    Canvas canvas = GetComponentInChildren<Canvas>();
+    if (canvas.renderMode != RenderMode.ScreenSpaceCamera)
+      canvas.renderMode = RenderMode.ScreenSpaceCamera;
+    if (canvas.worldCamera == null || canvas.worldCamera != Camera.main)
+      canvas.worldCamera = Camera.main;
   }
 }

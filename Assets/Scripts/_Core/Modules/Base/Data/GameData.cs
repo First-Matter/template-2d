@@ -11,5 +11,5 @@ public class GameData : BaseData
   [Data] public ExpData playerExp;
   [Data] public LevelData levelUpData;
   [Data] public PauseController pauseController;
-  public bool isSelectingUpgrade;
+  public bool isSelectingUpgrade { get; set; } = false;
 }
