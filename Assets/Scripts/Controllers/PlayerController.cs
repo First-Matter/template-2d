@@ -37,6 +37,7 @@ public class PlayerController : EventDrivenBehaviour
   private void HandleJumpPressed()
   {
     PlaySound(RegisteredSound.Grenade);
+    data.effects.ShakeScreen(1.5f, 0.5f);
     data.playerHealth.Reduce(10);
   }
   private void HandleFirePressed()

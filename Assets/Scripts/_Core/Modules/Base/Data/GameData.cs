@@ -11,6 +11,7 @@ public class GameData : BaseData
   [Data] public ExpData playerExp;
   [Data] public LevelData levelUpData;
   [Data] public PauseController pauseController;
+  [Data] public EffectsData effects;
   public bool isSelectingUpgrade { get; set; }
   protected override void OnEnable()
   {
