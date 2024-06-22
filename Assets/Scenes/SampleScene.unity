@@ -538,7 +538,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1832590647051401961, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1740382945}
   m_SourcePrefab: {fileID: 100100000, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
 --- !u!1 &1594120973
 GameObject:
@@ -608,6 +611,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1740382942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1832590647051401961, guid: 52b9610c2b9d51049bd06b7147f3613b, type: 3}
+  m_PrefabInstance: {fileID: 1531593005}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1740382945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740382942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311711ed6a00cb24a85f9b93ea9d1f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pause: 0
+  PausePanel: {fileID: 0}
+  pauseEventChannel: {fileID: 11400000, guid: 56bae0bb6ca776a4499bf8420548db3b, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

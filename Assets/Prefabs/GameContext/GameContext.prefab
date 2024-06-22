@@ -120,6 +120,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5832648525959005990}
   - component: {fileID: 7865344341524765374}
+  - component: {fileID: 7063703401468601841}
   m_Layer: 0
   m_Name: GameSettings
   m_TagString: Untagged
@@ -156,6 +157,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreResetBehaviour: 0
   levelResetBehaviour: 0
+--- !u!114 &7063703401468601841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1832590647051401961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 311711ed6a00cb24a85f9b93ea9d1f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Pause: 0
+  PausePanel: {fileID: 0}
+  pauseEventChannel: {fileID: 11400000, guid: 56bae0bb6ca776a4499bf8420548db3b, type: 2}
 --- !u!1 &3578624235327847346
 GameObject:
   m_ObjectHideFlags: 0
